@@ -1,2 +1,6 @@
 # ANTivity
-A universal student events web application for UCI students
+A universal student events system for UCI students
+
+
+---
+Informatics 134: T3
