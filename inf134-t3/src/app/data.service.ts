@@ -19,6 +19,7 @@ export class DataService {
     date;
     location;
     organization_id;
+    image;
   }> {
     return this.events;
   }
@@ -30,6 +31,7 @@ export class DataService {
     date;
     location;
     organization_id;
+    image;
   }) {
     this.events.push(event);
   }
@@ -40,6 +42,7 @@ export class DataService {
     description;
     website;
     social_media;
+    image;
   }> {
     return this.organizations;
   }
@@ -50,6 +53,7 @@ export class DataService {
     description;
     website;
     social_media;
+    image;
   }) {
     this.organizations.push(org);
   }
