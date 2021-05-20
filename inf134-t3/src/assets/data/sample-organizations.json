@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Women in Information and Computer Sciences",
+    "description": "WICS is a social and professional non-profit organization at UCI established to help and encourage women to pursue a college degree and a successful career in the computer science field.",
+    "website": "wics.ics.uci.edu",
+    "social_media": "@wicsuci"
+  },
+  {
+    "id": 2,
+    "name": "Hack at UCI",
+    "description": "Hack at UCI is a student-run organization established to provide students with a platform to learn, grow, and develop technology of the future. Established in 2013, their mission is to promote, educate, and enhance the community around us by giving students the platform to learn and create technology.",
+    "website": "hack.ics.uci.edu",
+    "social_media": "@hackatuci"
+  },
+  {
+    "id": 3,
+    "name": "Video Game Development Club",
+    "description": "The Video Game Development Club (VGDC) at UC Irvine is devoted to providing a community to student game developers. Their mission is to cultivate the game development interest on campus and provide an enriching environment for aspiring student developers to learn and grow.",
+    "website": "sites.google.com/uci.edu/vgdcuci",
+    "social_media": "@vgdc.uci"
+  }
+]

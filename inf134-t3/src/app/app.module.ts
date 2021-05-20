@@ -9,6 +9,7 @@ import { OrganizationsComponent } from './pages/organizations/organizations.comp
 import { SavedEventsComponent } from './pages/saved-events/saved-events.component';
 import { HeaderComponent } from './components/header/header.component';
 import { EventsListComponent } from './components/events-list/events-list.component';
+import { OrganizationsListComponent } from './components/organizations-list/organizations-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EventsListComponent } from './components/events-list/events-list.compon
     OrganizationsComponent,
     SavedEventsComponent,
     HeaderComponent,
-    EventsListComponent
+    EventsListComponent,
+    OrganizationsListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,35 +1,13 @@
 import { Injectable } from '@angular/core';
+import * as eventData from '../assets/data/sample-events.json';
+import * as organizationData from '../assets/data/sample-organizations.json';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  events = [
-    {
-      id: 1,
-      name: 'Resume Review',
-      organization: 'WICS',
-      description: 'Insert description for resume review',
-      date: '5/17/2021 4:00 PM',
-      location: 'Student Center',
-    },
-    {
-      id: 2,
-      name: 'Ice Cream Social',
-      organization: 'VGDC',
-      description: 'Insert description for ice cream social',
-      date: '5/18/2021 2:00 PM',
-      location: 'Aldrich Park',
-    },
-    {
-      id: 3,
-      name: 'Networking Event',
-      organization: 'Hack',
-      description: 'Insert description for networking event',
-      date: '5/19/2021 7:00 PM',
-      location: 'DBH 6011',
-    },
-  ];
+  events = (eventData as any).default;
+  organizations = (organizationData as any).default;
 
   constructor() {}
 
@@ -40,6 +18,7 @@ export class DataService {
     organization;
     date;
     location;
+    organization_id;
   }> {
     return this.events;
   }
@@ -50,7 +29,28 @@ export class DataService {
     organization;
     date;
     location;
+    organization_id;
   }) {
     this.events.push(event);
+  }
+
+  public getOrganizations(): Array<{
+    id;
+    name;
+    description;
+    website;
+    social_media;
+  }> {
+    return this.organizations;
+  }
+
+  public createOrganization(org: {
+    id;
+    name;
+    description;
+    website;
+    social_media;
+  }) {
+    this.organizations.push(org);
   }
 }
