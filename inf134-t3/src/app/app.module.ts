@@ -10,6 +10,8 @@ import { SavedEventsComponent } from './pages/saved-events/saved-events.componen
 import { HeaderComponent } from './components/header/header.component';
 import { EventsListComponent } from './components/events-list/events-list.component';
 import { OrganizationsListComponent } from './components/organizations-list/organizations-list.component';
+import { ScheduleComponent } from './pages/schedule/schedule.component';
+import { SingleEventComponent } from './pages/single-event/single-event.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { OrganizationsListComponent } from './components/organizations-list/orga
     SavedEventsComponent,
     HeaderComponent,
     EventsListComponent,
-    OrganizationsListComponent
+    OrganizationsListComponent,
+    ScheduleComponent,
+    SingleEventComponent
   ],
   imports: [
     BrowserModule,

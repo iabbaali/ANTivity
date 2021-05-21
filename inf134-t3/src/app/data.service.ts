@@ -23,6 +23,16 @@ export class DataService {
   }> {
     return this.events;
   }
+
+  public getEvent(id) {
+    for (let event of this.events) {
+      if (event.id === id) {
+        return event;
+      }
+    }
+    return null;
+  }
+
   public createEvent(event: {
     id;
     name;
