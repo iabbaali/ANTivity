@@ -17,9 +17,8 @@ export class SingleEventComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.eventID = this.route.snapshot.paramMap.get('id');
-    this.dataService.getEvent(this.eventID).then((data) => {
-      // this.event = data;
-    });
+    this.eventID = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.event = this.dataService.getEvent(this.eventID);
+    console.log(this.event);
   }
 }

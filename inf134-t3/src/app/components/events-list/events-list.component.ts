@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events-list',
@@ -10,7 +11,7 @@ export class EventsListComponent implements OnInit {
   public events;
   public selectedEvent;
 
-  constructor(public dataService: DataService) {}
+  constructor(public dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.events = this.dataService.getEvents();
