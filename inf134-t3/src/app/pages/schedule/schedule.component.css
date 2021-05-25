@@ -26,3 +26,12 @@ map area {
 .campus-area {
   margin-bottom: 50px;
 }
+
+.btn-custom {
+  background-color: var(--dark-blue);
+  color: var(--light-cyan);
+}
+
+#campus-dropdown {
+  margin-bottom: 10px;
+}

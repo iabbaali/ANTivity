@@ -6,8 +6,28 @@
       We will use this information to help you find events near you that match
       your availability.
     </p>
+    <div id="campus-dropdown">
+      <div class="btn-group">
+        <button type="button" class="btn btn-custom">{{ buttonText }}</button>
+        <button
+          type="button"
+          class="btn btn-custom dropdown-toggle dropdown-toggle-split"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="showMap('north')">North</a>
+          <a class="dropdown-item" (click)="showMap('east')">East</a>
+          <a class="dropdown-item" (click)="showMap('south')">South</a>
+          <a class="dropdown-item" (click)="showMap('west')">West</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="campus-area">
+  <div class="campus-area" [hidden]="!northMap">
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +238,7 @@
       </a>
     </svg>
   </div>
-  <div class="campus-area">
+  <div class="campus-area" [hidden]="!eastMap">
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -430,7 +450,7 @@
       </a>
     </svg>
   </div>
-  <div class="campus-area">
+  <div class="campus-area" [hidden]="!southMap">
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -741,7 +761,7 @@
       </a>
     </svg>
   </div>
-  <div class="campus-area">
+  <div class="campus-area" [hidden]="!westMap">
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
