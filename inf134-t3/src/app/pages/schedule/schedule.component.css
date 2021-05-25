@@ -22,3 +22,7 @@ h2 {
 map area {
   cursor: pointer;
 }
+
+.campus-area {
+  margin-bottom: 50px;
+}
