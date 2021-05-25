@@ -19,7 +19,7 @@ h2 {
   font-size: 1.25rem;
 }
 
-map area {
+.campus-area a {
   cursor: pointer;
 }
 
