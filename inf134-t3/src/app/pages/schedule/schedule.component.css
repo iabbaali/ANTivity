@@ -35,3 +35,54 @@ h2 {
 #campus-dropdown {
   margin-bottom: 10px;
 }
+
+.modal-title div {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+.modal-content {
+  text-align: center;
+}
+
+#exampleModalLabel {
+  color: var(--gold);
+}
+
+#popup-label {
+  color: black;
+}
+
+.modal-body {
+  text-align: left;
+}
+
+.days1,
+.days2,
+.days3 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.day {
+  background-color: var(--light-cyan);
+  padding: 12px;
+  border-radius: 30px;
+  margin-right: 3px;
+  cursor: pointer;
+}
+
+.day:hover {
+  background-color: var(--bright-blue);
+  color: var(--white);
+}
+
+.day-clicked {
+  background-color: var(--bright-blue);
+  color: var(--white);
+}
+
+.day-unclicked {
+  background-color: var(--light-cyan);
+  color: black;
+}

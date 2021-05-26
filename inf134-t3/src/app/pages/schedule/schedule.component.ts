@@ -11,6 +11,9 @@ export class ScheduleComponent implements OnInit {
   southMap = false;
   westMap = false;
   buttonText = 'Campus';
+  selectedArea = null;
+  startTime = '08:00:00';
+  endTime = '17:00:00';
 
   constructor() {}
 
@@ -20,7 +23,7 @@ export class ScheduleComponent implements OnInit {
     var target = event.target || event.srcElement || event.currentTarget;
     var idAttr = target.attributes.title;
     var value = idAttr.nodeValue;
-    console.log(value);
+    this.selectedArea = value;
   }
 
   hideAllMaps() {
@@ -45,5 +48,43 @@ export class ScheduleComponent implements OnInit {
       this.westMap = true;
       this.buttonText = 'West';
     }
+  }
+
+  selectDay(event) {
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+    let selector = '#' + value;
+    let element = document.querySelector(selector);
+    if (element.classList.contains('day-clicked')) {
+      element.classList.remove('day-clicked');
+      element.classList.add('day-unclicked');
+    } else {
+      element.classList.add('day-clicked');
+      element.classList.remove('day-unclicked');
+    }
+  }
+
+  clearDays() {
+    let days = document.querySelectorAll('.day');
+    days.forEach((day) => {
+      if (day.classList.contains('day-clicked')) {
+        day.classList.remove('day-clicked');
+      }
+    });
+  }
+
+  saveSchedule() {
+    let selectedDays = [];
+    let days = document.querySelectorAll('.day');
+    days.forEach((day) => {
+      if (day.classList.contains('day-clicked')) {
+        selectedDays.push(day.id);
+      }
+    });
+    console.log(this.startTime);
+    console.log(this.endTime);
+    console.log(selectedDays);
+    this.clearDays();
   }
 }
