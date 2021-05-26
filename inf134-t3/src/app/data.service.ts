@@ -8,6 +8,7 @@ import * as organizationData from '../assets/data/sample-organizations.json';
 export class DataService {
   events = (eventData as any).default;
   organizations = (organizationData as any).default;
+  schedule = {};
 
   constructor() {}
 
@@ -66,5 +67,23 @@ export class DataService {
     image;
   }) {
     this.organizations.push(org);
+  }
+
+  public addToSchedule(building, days, start, end) {
+    if (!(building in this.schedule)) {
+      this.schedule[building] = [];
+    }
+    this.schedule[building].push([days, start, end]);
+  }
+
+  public getSchedule() {
+    return this.schedule;
+  }
+
+  public removeFromSchedule(key, index) {
+    this.schedule[key].splice(index, 1);
+    if (this.schedule[key].length === 0) {
+      delete this.schedule[key];
+    }
   }
 }

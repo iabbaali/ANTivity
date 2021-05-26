@@ -86,3 +86,21 @@ h2 {
   background-color: var(--light-cyan);
   color: black;
 }
+
+.card-custom {
+  margin-bottom: 1rem;
+}
+
+i {
+  margin-left: 3rem;
+  color: red;
+  cursor: pointer;
+}
+
+.time {
+  color: gray;
+}
+
+.card-text-custom {
+  margin-bottom: 1rem;
+}

@@ -953,7 +953,12 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <button
+            type="button"
+            #closebutton
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
             Close
           </button>
           <button
@@ -964,6 +969,35 @@
             Save
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="container">
+      <div class="row">
+        <span
+          *ngFor="let obj of convertedSchedule"
+          class="card col-lg-6 card-custom"
+        >
+          <div class="card-body">
+            <h5 class="card-title">{{ obj[0] }}</h5>
+            <span
+              class="card-text row justify-content-between card-text-custom"
+              *ngFor="let info of obj[1]; let i = index"
+            >
+              <span class="col-md-5 col-12">{{ formatDays(info[0]) }}</span>
+              <span class="col-md-5 col-12">
+                <span class="time"
+                  >{{ formatTime(info[1]) }} - {{ formatTime(info[2]) }}</span
+                >
+                <i
+                  class="bi bi-x-circle-fill inline-block"
+                  (click)="removeScheduleInput(obj[0], i)"
+                ></i>
+              </span>
+            </span>
+          </div>
+        </span>
       </div>
     </div>
   </div>

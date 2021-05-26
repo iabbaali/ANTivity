@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ApplicationRef, Component, OnInit, ViewChild } from '@angular/core';
+import { DataService } from 'src/app/data.service';
 
 @Component({
   selector: 'app-schedule',
@@ -6,16 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./schedule.component.css'],
 })
 export class ScheduleComponent implements OnInit {
+  @ViewChild('closebutton') closebutton;
+
   northMap = true;
   eastMap = false;
   southMap = false;
   westMap = false;
   buttonText = 'Campus';
   selectedArea = null;
-  startTime = '08:00:00';
-  endTime = '17:00:00';
+  startTime = '08:00';
+  endTime = '17:00';
+  convertedSchedule = [];
 
-  constructor() {}
+  constructor(public dataService: DataService) {}
 
   ngOnInit(): void {}
 
@@ -82,9 +86,63 @@ export class ScheduleComponent implements OnInit {
         selectedDays.push(day.id);
       }
     });
-    console.log(this.startTime);
-    console.log(this.endTime);
-    console.log(selectedDays);
     this.clearDays();
+    this.closebutton.nativeElement.click();
+    this.dataService.addToSchedule(
+      this.selectedArea,
+      selectedDays,
+      this.startTime,
+      this.endTime
+    );
+    this.convertedSchedule = Object.entries(this.dataService.getSchedule());
+  }
+
+  toDate(dStr) {
+    var format = 'h:m';
+    var now = new Date();
+    if (format == 'h:m') {
+      now.setHours(dStr.substr(0, dStr.indexOf(':')));
+      now.setMinutes(dStr.substr(dStr.indexOf(':') + 1));
+      now.setSeconds(0);
+      return now;
+    } else return 'Invalid Format';
+  }
+
+  formatTime(time) {
+    let hour = time.substr(0, time.indexOf(':'));
+    let min = time.substr(time.indexOf(':') + 1);
+    let ampm = '';
+    let h = parseInt(hour);
+    let m = parseInt(min);
+    if (h >= 12) {
+      ampm = 'PM';
+    } else {
+      ampm = 'AM';
+    }
+    h = h % 12;
+    if (h === 0) {
+      h = 12;
+    }
+    let minString = m < 10 ? '0' + m : '' + m;
+    return h + ':' + minString + ' ' + ampm;
+  }
+
+  formatDays(days) {
+    if (days.length === 7) {
+      return 'Everyday';
+    }
+    if (
+      days.length === 2 &&
+      days.includes('Saturday') &&
+      days.includes('Sunday')
+    ) {
+      return 'Weekends';
+    }
+    return days.join(', ');
+  }
+
+  removeScheduleInput(key, index) {
+    this.dataService.removeFromSchedule(key, index);
+    this.convertedSchedule = Object.entries(this.dataService.getSchedule());
   }
 }
