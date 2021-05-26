@@ -21,7 +21,9 @@ export class ScheduleComponent implements OnInit {
 
   constructor(public dataService: DataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.convertedSchedule = Object.entries(this.dataService.getSchedule());
+  }
 
   selectArea(event) {
     var target = event.target || event.srcElement || event.currentTarget;

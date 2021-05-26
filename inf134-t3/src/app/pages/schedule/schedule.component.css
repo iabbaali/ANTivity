@@ -89,6 +89,11 @@ h2 {
 
 .card-custom {
   margin-bottom: 1rem;
+  border-radius: 30px;
+}
+
+.card-custom:hover {
+  background-color: var(--light-cyan);
 }
 
 i {

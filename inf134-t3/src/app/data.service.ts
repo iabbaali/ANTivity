@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as eventData from '../assets/data/sample-events.json';
 import * as organizationData from '../assets/data/sample-organizations.json';
+import * as scheduleData from '../assets/data/sample-schedule.json';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,7 @@ import * as organizationData from '../assets/data/sample-organizations.json';
 export class DataService {
   events = (eventData as any).default;
   organizations = (organizationData as any).default;
-  schedule = {};
+  schedule = (scheduleData as any).default;
 
   constructor() {}
 
