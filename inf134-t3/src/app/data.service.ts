@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as eventData from '../assets/data/sample-events.json';
 import * as organizationData from '../assets/data/sample-organizations.json';
+import * as userData from '../assets/data/sample-user-data.json';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,7 @@ import * as organizationData from '../assets/data/sample-organizations.json';
 export class DataService {
   events = (eventData as any).default;
   organizations = (organizationData as any).default;
+  users = (userData as any).default;
 
   constructor() {}
 
@@ -67,4 +69,30 @@ export class DataService {
   }) {
     this.organizations.push(org);
   }
+
+  public getUsers(): Array<{
+    id;
+    name;
+    saved_event_categories;
+  }> {
+    return this.users
+  }
+
+  public getUser(id) {
+    for (let user of this.users) {
+      if (user.id === id) {
+        return user;
+      }
+    }
+    return null;
+  }
+
+  public createUser(user: {
+    id;
+    name;
+    saved_event_categories;
+  }) {
+    this.users.push(user);
+  }
+
 }
