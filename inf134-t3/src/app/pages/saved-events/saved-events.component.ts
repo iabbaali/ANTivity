@@ -14,6 +14,8 @@ export class SavedEventsComponent implements OnInit {
   workshopsButton: HTMLElement;
   mustAttendButton: HTMLElement;
 
+  categories: string[];
+
   lightGray: string = "#c4c4c4";
   selectedCatgeory: string = "all";
 
