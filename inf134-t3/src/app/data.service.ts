@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as eventData from '../assets/data/sample-events.json';
 import * as organizationData from '../assets/data/sample-organizations.json';
+import * as scheduleData from '../assets/data/sample-schedule.json';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,7 @@ import * as organizationData from '../assets/data/sample-organizations.json';
 export class DataService {
   events = (eventData as any).default;
   organizations = (organizationData as any).default;
+  schedule = (scheduleData as any).default;
 
   constructor() {}
 
@@ -66,5 +68,23 @@ export class DataService {
     image;
   }) {
     this.organizations.push(org);
+  }
+
+  public addToSchedule(building, days, start, end) {
+    if (!(building in this.schedule)) {
+      this.schedule[building] = [];
+    }
+    this.schedule[building].push([days, start, end]);
+  }
+
+  public getSchedule() {
+    return this.schedule;
+  }
+
+  public removeFromSchedule(key, index) {
+    this.schedule[key].splice(index, 1);
+    if (this.schedule[key].length === 0) {
+      delete this.schedule[key];
+    }
   }
 }
