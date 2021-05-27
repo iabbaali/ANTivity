@@ -5,12 +5,20 @@
 /* font-family: 'Lato', sans-serif;
 font-family: 'Poppins', sans-serif; */
 
+:root {
+  --gold: #ffbc42;
+  --dark-blue: #001d4a;
+  --white: #fbfcff;
+  --bright-blue: #0f79dc;
+  --light-cyan: #e3f9f7;
+}
+
 * {
   font-family: "Poppins", sans-serif;
 }
 
 body {
-  background: linear-gradient(to bottom, #0f79dc, #e3f9f7);
+  background: linear-gradient(to bottom, var(--bright-blue), var(--light-cyan));
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;

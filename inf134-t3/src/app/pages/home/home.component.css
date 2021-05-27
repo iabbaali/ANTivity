@@ -1,3 +1,63 @@
 #home-area {
-  margin-top: 85px;
+  margin: 50px;
+}
+
+#welcome {
+  color: var(--dark-blue);
+  font-size: 1.25rem;
+  animation: 1s slide-right;
+}
+
+#title {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-style: italic;
+  font-size: 3.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+h5 {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: var(--light-cyan);
+  /* animation: 5s slide-right; */
+}
+
+p {
+  font-size: 1.25rem;
+}
+
+#motivation {
+  font-weight: bold;
+}
+
+div.slide-right {
+  width: 100%;
+  overflow: hidden;
+}
+div.slide-right p {
+  animation: 3s slide-right;
+  color: var(--gold);
+  font-size: 3.5rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+@keyframes slide-right {
+  from {
+    margin-left: -100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+.img-custom {
+  border-radius: 50px;
+  margin-bottom: 10px;
 }
