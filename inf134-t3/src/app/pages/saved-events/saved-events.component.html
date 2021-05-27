@@ -3,26 +3,11 @@
   <button class="btn btn-primary" (click)="goToSchedulePage()">
     Import Schedule
   </button>
-  <div class="container" id="saved-events-groups">
-    <div class="row">
+  <div class="container" id="saved-events-groups" data-selected="All">
+    <div class="row" id="categories">
       <div class="col">
-        <button id="allButton" class="btn btn-primary bg-transparent" (click)="showAll()" style="border: none; color: black">
+        <button id="All" class="btn btn-primary bg-transparent" (click)="showAll()" style="border: none; color: black">
           All
-        </button>
-      </div>
-      <div class="col">
-        <button id="socialsButton" class="btn btn-primary bg-transparent" (click)="showSocials()" style="border: none; color: #c4c4c4;">
-          Socials
-        </button>
-      </div>
-      <div class="col">
-        <button id="workshopsButton" class="btn btn-primary bg-transparent" (click)="showWorkshops()" style="border: none; color: #c4c4c4">
-          Workshops
-        </button>
-      </div>
-      <div class="col">
-        <button id="attendButton" class="btn btn-primary bg-transparent" (click)="showMustAttend()" style="border: none; color: #c4c4c4">
-          Must Attend
         </button>
       </div>
     </div>
