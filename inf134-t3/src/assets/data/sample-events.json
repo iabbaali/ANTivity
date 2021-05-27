@@ -28,5 +28,35 @@
     "location": "DBH 6011",
     "organization_id": 2,
     "image": ""
+  },
+  {
+    "id": 4,
+    "name": "Open Mic Night",
+    "organization": "Patient Project",
+    "description": "Insert description for mic night event",
+    "date": "5/22/2021 4:00 PM",
+    "location": "RH 401",
+    "organization_id": 4,
+    "image": ""
+  },
+  {
+    "id": 5,
+    "name": "Influencer Insights",
+    "organization": "ASUCI",
+    "description": "Insert description for influencer event",
+    "date": "5/15/2021 10:00 AM",
+    "location": "ICS 121",
+    "organization_id": 9,
+    "image": ""
+  },
+  {
+    "id": 6,
+    "name": "Tuition Awareness Town Hall",
+    "organization": "ASUCI",
+    "description": "Insert description for town hall event",
+    "date": "5/26/2021 7:00 PM",
+    "location": "SLH 302",
+    "organization_id": 9,
+    "image": ""
   }
 ]
