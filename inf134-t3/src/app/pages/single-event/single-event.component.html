@@ -1,3 +1,39 @@
 <div id="single-event-area">
-  <p>single-event works!</p>
-</div>
+ 
+<br>
+
+  <div class="col">
+    <div class="card  m-2">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align: center; font-size: x-large; color: #2F80ED">{{event.name}}</h5>
+        <p style="float: right;"><img src={{eventImage}} height="150px" width="200px" border="1px"></p>
+        <p>{{event.organization}}</p>
+        <p> {{eventDate.toLocaleDateString([], {month: 'numeric', day: 'numeric', year: '2-digit'})}}</p>
+        <p> {{eventDate.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'})}}</p>
+        <p> {{event.location}}</p>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{event.description}}</p>
+        </div>
+      <div class="card-body text-center">
+        <a href="#" class="btn btn-primary btn-block"> Register </a>
+      </div>
+        <div class="card-footer">
+            <a href="javascript:history.back()" style="float: left;"> <- Back to Events </a>
+          </div>
+        </div>
+      
+    </div>
+<!-- ADD REGISTER FUNCTIONALITY -->
+
+  </div>
+
+
+
+
+
+
+
+
+
+
