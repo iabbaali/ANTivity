@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
 
 @Component({
@@ -16,7 +16,8 @@ export class SingleEventComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -24,16 +25,20 @@ export class SingleEventComponent implements OnInit {
     this.event = this.dataService.getEvent(this.eventID);
     console.log(this.event);
 
-    var parts = this.event.date.split(" ");
-    var date = parts[0].split("/");
-    var hour = parseInt((parts[1].split(":"))[0]);
-    var minutes = parseInt((parts[1].split(":"))[1]);
+    var parts = this.event.date.split(' ');
+    var date = parts[0].split('/');
+    var hour = parseInt(parts[1].split(':')[0]);
+    var minutes = parseInt(parts[1].split(':')[1]);
 
-    if (parts[2] == "PM"){
+    if (parts[2] == 'PM') {
       hour += 12;
     }
 
     this.eventDate = new Date(date[2], date[0] - 1, date[1], hour, minutes);
-    this.eventImage = "../../../assets/images/" + this.event.image;
+    this.eventImage = '../../../assets/images/' + this.event.image;
+  }
+
+  backToEvents() {
+    this.router.navigateByUrl('/events');
   }
 }
