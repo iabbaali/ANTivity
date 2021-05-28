@@ -105,6 +105,12 @@ export class SavedEventsComponent implements OnInit {
       let cardTitle = document.createElement("h5");
       cardTitle.className = "card-title";
       cardTitle.innerText = this.savedEvents.All[eventItem].name;
+      let cardOrg = document.createElement("h6");
+      cardOrg.className = "card-title";
+      cardOrg.innerText = this.savedEvents.All[eventItem].organization;
+      let cardDate = document.createElement("h6");
+      cardDate.className = "card-title";
+      cardDate.innerText = this.savedEvents.All[eventItem].date + " - " + this.savedEvents.All[eventItem].location;
       let cardText = document.createElement("p");
       cardText.className = "card-text";
       cardText.innerHTML = this.savedEvents.All[eventItem].description;
@@ -115,6 +121,8 @@ export class SavedEventsComponent implements OnInit {
 
       cardBodyDiv.appendChild(cardImage);
       cardBodyDiv.appendChild(cardTitle);
+      cardBodyDiv.appendChild(cardOrg);
+      cardBodyDiv.appendChild(cardDate);
       cardBodyDiv.appendChild(cardText);
       cardDiv.appendChild(cardBodyDiv);
       colDiv.appendChild(cardDiv);
