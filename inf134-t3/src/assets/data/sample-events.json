@@ -37,7 +37,7 @@
     "date": "5/22/2021 4:00 PM",
     "location": "RH 401",
     "organization_id": 4,
-    "image": ""
+    "image": "rowland.jpg"
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@
     "date": "5/15/2021 10:00 AM",
     "location": "ICS 121",
     "organization_id": 9,
-    "image": ""
+    "image": "ics.jpg"
   },
   {
     "id": 6,
@@ -57,7 +57,7 @@
     "date": "5/26/2021 7:00 PM",
     "location": "SLH 302",
     "organization_id": 9,
-    "image": ""
+    "image": "slh.jpg"
   },
   {
     "id": 7,
@@ -67,7 +67,7 @@
     "date": "5/26/2021 8:00 PM",
     "location": "Claire Trevor Theatre",
     "organization_id": 6,
-    "image": ""
+    "image": "theatre.jpg"
   },
   {
     "id": 8,
@@ -77,7 +77,7 @@
     "date": "5/28/2021 9:00 AM",
     "location": "SST 202",
     "organization_id": 8,
-    "image": ""
+    "image": "sst.png"
   },
   {
     "id": 9,
@@ -87,7 +87,7 @@
     "date": "5/28/2021 11:00 AM",
     "location": "Langson Library",
     "organization_id": 11,
-    "image": ""
+    "image": "langson.JPG"
   },
   {
     "id": 10,
@@ -97,7 +97,7 @@
     "date": "5/31/2021 3:00 PM",
     "location": "Langson Library",
     "organization_id": 11,
-    "image": ""
+    "image": "langson.JPG"
   },
   {
     "id": 11,
@@ -107,7 +107,7 @@
     "date": "5/27/2021 1:00 PM",
     "location": "SSH 101",
     "organization_id": 12,
-    "image": ""
+    "image": "ssh.jpg"
   }
 
 ]
