@@ -1,3 +1,50 @@
 #single-event-area {
   margin-top: 85px;
 }
+
+img {
+  border-radius: 20px;
+}
+
+.card-custom {
+  border-radius: 20px;
+}
+
+.event-data {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#event-info {
+  font-size: 1.1rem;
+}
+
+.btn-custom {
+  background-color: var(--light-cyan);
+  color: var(--dark-blue);
+  border-color: var(--light-cyan);
+  max-width: 50%;
+  display: block;
+  margin: 0 auto;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.btn-custom:hover,
+.btn-custom:active {
+  background-color: var(--bright-blue);
+  color: var(--white);
+}
+
+.icon-area {
+  display: block;
+}
+
+.bi-custom {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+
+#back-area {
+  cursor: pointer;
+}

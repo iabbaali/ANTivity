@@ -1,19 +1,115 @@
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+/>
+<!-- Reference Material
+http://androidcss.com/css/css3-floating-button-tutorial/
+https://getbootstrap.com/docs/4.0/utilities/colors/
+https://www.w3schools.com/cssref/pr_class_display.asp
+https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0245
+ -->
+
 <div class="container" style="margin-top: 70px">
-  <table class="table table-hover">
+  <div id="searchBar" style="text-align: center">
+    <input />
+    <button class="btn btn-light" id="searchButton">Search</button>
+  </div>
+  <!-- 
+  <h2>Drag and Drop</h2>
+    <div class="container">
+      <div  id="div1" 
+            (drop)="drop($event)" 
+            (dragover)="allowDrop($event)">
+
+            <img 
+            src="https://images.pexels.com/photos/658687/pexels-photo-658687.jpeg?auto=compress&cs=tinysrgb&h=350" 
+            draggable="true" 
+            (dragstart)="drag($event)" 
+            id="drag1"
+            width="50" 
+            height="50">
+      </div>
+
+      <div id="div2" 
+        (drop)="drop($event)" 
+        (dragover)="allowDrop($event)">
+      </div>  
+    </div> -->
+
+  <div id="searchOptions" style="text-align: center">
+    <!-- TODO: Question if we need a filter option in our program -->
+    <button class="btn btn-success" id="FilterButton">
+      <i class="fa fa-filter"></i> Filters
+    </button>
+    <button class="btn btn-success" id="SortButton" (click)="startSort('name')">
+      <i class="fa fa-sort"></i> Alphabetical Order
+    </button>
+    <button class="btn btn-success" id="DateButton" (click)="startSort('date')">
+      <i class="fa fa-bell"></i> Date
+    </button>
+  </div>
+  <table id="table" class="table table-hover">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Organization</th>
+        <th style="text-align: center">Events</th>
+        <!-- <th>Organization</th>
         <th>Date</th>
         <th>Location</th>
-        <th>Actions</th>
+        <th>Actions</th> -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let event of events">
-        <td>{{ event.id }}</td>
-        <td>{{ event.name }}</td>
+        <td>
+          <div class="card border-success">
+            <!-- Header -->
+            <div class="card-header bg-success">
+              <!-- TODO: don't forget about adding {{events.img}} to have custom imgs for events -->
+              <div
+                id="event + {{ event.id }}"
+                (drop)="drop($event)"
+                (dragover)="allowDrop($event)"
+              >
+                <img
+                  src="../../../assets/images/anteater-icon.png"
+                  draggable="true"
+                  (dragstart)="drag($event)"
+                  id="drag + {{ event.id }}"
+                  width="50"
+                  height="50"
+                  style="float: left"
+                />
+              </div>
+              <span
+                style="margin: 10px; position: absolute; vertical-align: middle"
+                >{{ event.name }}</span
+              >
+            </div>
+            <!-- Information -->
+            <div class="container" style="margin: 10px">
+              <div class="row">
+                <div class="col-sm">
+                  <i class="fa fa-building"></i> {{ event.organization }}
+                </div>
+                <div class="col-sm">
+                  <i class="fa fa-bell"></i> {{ event.date }}
+                </div>
+                <div class="col-sm">
+                  <i class="fa fa-map-signs"></i> {{ event.location }}
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              {{ event.description }}
+              <button class="btn btn-primary" (click)="selectEvent(event)">
+                Show details
+              </button>
+            </div>
+          </div>
+        </td>
+
+        <!-- <td>{{ event.name }}</td>
         <td>{{ event.organization }}</td>
         <td>{{ event.date }}</td>
         <td>{{ event.location }}</td>
@@ -21,17 +117,64 @@
           <button class="btn btn-primary" (click)="selectEvent(event)">
             Show details
           </button>
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>
-  <div class="card text-center" *ngIf="selectedEvent">
-    <div class="card-header"># {{ selectedEvent.id }}</div>
+
+  <a class="float" id="menu-share">
+    <i
+      (drop)="drop($event)"
+      (dragover)="allowDrop($event)"
+      class="fa fa-calendar my-float"
+    ></i>
+  </a>
+  <div class="label-container">
+    <div class="label-text">Drag Image of the Event to any Folder</div>
+    <i class="fa fa-play label-arrow"></i>
+  </div>
+  <ul>
+    <li>
+      <a>
+        <i
+          (drop)="drop($event)"
+          (dragover)="allowDrop($event)"
+          class="fa fa-folder my-float"
+        ></i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <i
+          (drop)="drop($event)"
+          (dragover)="allowDrop($event)"
+          class="fa fa-folder my-float"
+        ></i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <i
+          (drop)="drop($event)"
+          (dragover)="allowDrop($event)"
+          class="fa fa-folder my-float"
+        ></i>
+      </a>
+    </li>
+  </ul>
+
+  <!-- <div id="div1" (drop)="drop($event)" (dragover)="allowDrop($event)" class="float">
+    <i class="fa fa-plus my-float"></i>
+  </div> -->
+
+  <div class="card text-center border-success" *ngIf="selectedEvent">
+    <div class="card-header bg-success"># {{ selectedEvent.id }}</div>
     <div class="card-block">
       <h4 class="card-title">{{ selectedEvent.name }}</h4>
       <p class="card-text">
         {{ selectedEvent.description }}
       </p>
+      <button (click)="goBack()">Go Back</button>
       <a [href]="'/event/' + selectedEvent.id.toString()">Click Here</a>
     </div>
   </div>
