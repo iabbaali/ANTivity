@@ -110,7 +110,7 @@ export class SavedEventsComponent implements OnInit {
       cardText.innerText = this.savedEvents.All[eventItem].description;
       let cardImage = document.createElement("img");
       cardImage.className = "card-img-top";
-      cardImage.src = this.savedEvents.All[eventItem].image;
+      cardImage.src = "../../../assets/images/" + this.savedEvents.All[eventItem].image;
       cardImage.alt = "Card image";
 
       cardBodyDiv.appendChild(cardImage);

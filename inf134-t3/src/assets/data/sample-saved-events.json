@@ -4,37 +4,37 @@
         "id": 1,
         "name": "Resume Review",
         "organization": "WICS",
-        "description": "Insert description for resume review",
+        "description": "Come down to the Student Center at 4PM on May 17th, 2021. Women in ICS will be holding a Resume review workshop where the board officers will be showing off sample resumes and providing an opportunity for anyone to get their resume personally reviewed for some constructive feedback!<br/><br/>We will also help build your resume if you do not have one or are in the process of making one! If you have a resume already but you’re looking for ways to stand out in certain industries or just want to find ways to make it better, please stop by as well!<br/><br/>Refreshments will be offered by the club free of charge! Make sure to stop by to improve your resume!",
         "date": "5/17/2021 4:00 PM",
         "location": "Student Center",
         "organization_id": 1,
-        "image": ""
+        "image": "center.jpeg"
       },
       {
         "id": 2,
         "name": "Ice Cream Social",
         "organization": "VGDC",
-        "description": "Insert description for ice cream social",
+        "description": "Come out and enjoy some ice cream with us, make some new friends, and learn more about what VGDC is all about! All of our board officers will be there. <br/><br/> Available flavors will include:<br/>- Strawberry<br/>- Chocolate<br/>- Vanilla<br/>- Cookies and Cream<br/><br/> Ice cream will be supplied by the club free of charge! This event is scheduled to be around 2 hours.",
         "date": "5/18/2021 2:00 PM",
         "location": "Aldrich Park",
         "organization_id": 3,
-        "image": ""
+        "image": "park.jpeg"
       },
       {
         "id": 3,
         "name": "Networking Event",
         "organization": "Hack",
-        "description": "Insert description for networking event",
+        "description": "Hack at UCI will be hosting one of our many networking events of the year at Donald Bren Hall at 7PM on May 19th, 2021.<br/><br/>This event will include guest speakers from, but not limited to:<br/>- Facebook<br/>- Apple<br/>- Ingram Micro<br/>- urSpace<br/><br/>This is a great opportunity to meet some industry professionals and fellow students who are interested in the same fields. Make sure to have your linkedIn ready to connect!",
         "date": "5/19/2021 7:00 PM",
         "location": "DBH 6011",
         "organization_id": 2,
-        "image": ""
+        "image": "dbh.jpeg"
       },
       {
         "id": 4,
         "name": "Open Mic Night",
         "organization": "Patient Project",
-        "description": "Recite your poetry and prose to other students! Get exposed t o some of the lovely writers in our community! Open to all UCI students!",
+        "description": "Recite your poetry and prose to other students! Get exposed to some of the lovely writers in our community! Open to all UCI students!",
         "date": "5/22/2021 4:00 PM",
         "location": "RH 401",
         "organization_id": 4,
