@@ -108,3 +108,26 @@ a.float:hover + div.label-container {
 .collapse-area i {
   cursor: pointer;
 }
+
+.event-link-area {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.event-link {
+  background-color: var(--light-cyan);
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: var(--dark-blue);
+  text-align: center;
+}
+
+.event-link:hover,
+.event-link:active,
+.event-link:focus {
+  background-color: var(--bright-blue);
+  color: var(--white);
+}
