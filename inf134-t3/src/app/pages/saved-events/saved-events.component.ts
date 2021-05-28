@@ -93,11 +93,11 @@ export class SavedEventsComponent implements OnInit {
       //console.log(this.savedEvents.All[eventItem]);
 
       let rowDiv = document.createElement("div");
-      rowDiv.className = "row event-card";
+      rowDiv.className = "row event-card justify-content-md-center";
       rowDiv.style.paddingTop = "1em";
       rowDiv.id = this.savedEvents.All[eventItem].id.toString();
       let colDiv = document.createElement("div");
-      colDiv.className = "col";
+      colDiv.className = "col-md-6";
       let cardDiv = document.createElement("div");
       cardDiv.className = "card";
       let cardBodyDiv = document.createElement("div");
@@ -105,9 +105,15 @@ export class SavedEventsComponent implements OnInit {
       let cardTitle = document.createElement("h5");
       cardTitle.className = "card-title";
       cardTitle.innerText = this.savedEvents.All[eventItem].name;
+      let cardOrg = document.createElement("h6");
+      cardOrg.className = "card-title";
+      cardOrg.innerText = this.savedEvents.All[eventItem].organization;
+      let cardDate = document.createElement("h6");
+      cardDate.className = "card-title";
+      cardDate.innerText = this.savedEvents.All[eventItem].date + " - " + this.savedEvents.All[eventItem].location;
       let cardText = document.createElement("p");
       cardText.className = "card-text";
-      cardText.innerText = this.savedEvents.All[eventItem].description;
+      cardText.innerHTML = this.savedEvents.All[eventItem].description;
       let cardImage = document.createElement("img");
       cardImage.className = "card-img-top";
       cardImage.src = "../../../assets/images/" + this.savedEvents.All[eventItem].image;
@@ -115,6 +121,8 @@ export class SavedEventsComponent implements OnInit {
 
       cardBodyDiv.appendChild(cardImage);
       cardBodyDiv.appendChild(cardTitle);
+      cardBodyDiv.appendChild(cardOrg);
+      cardBodyDiv.appendChild(cardDate);
       cardBodyDiv.appendChild(cardText);
       cardDiv.appendChild(cardBodyDiv);
       colDiv.appendChild(cardDiv);
@@ -135,7 +143,7 @@ export class SavedEventsComponent implements OnInit {
       allButtons[i].setAttribute("style", "border: none; color: #c4c4c4");
     }
     document.getElementById("saved-events-groups").dataset.value = "All";
-    let allEventCards = document.getElementsByClassName("row event-card");
+    let allEventCards = document.getElementsByClassName("row event-card justify-content-md-center");
     for (let i = 0; i < allEventCards.length; i++) {
       allEventCards[i].setAttribute("style", "padding-top: 2em;");
     }
