@@ -59,7 +59,7 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let event of events">
+      <tr *ngFor="let event of events; let i = index">
         <td>
           <div class="card border-success">
             <!-- Header -->
@@ -101,10 +101,39 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
             </div>
 
             <div class="card-body">
-              {{ event.description }}
-              <button class="btn btn-primary" (click)="selectEvent(event)">
-                Show details
-              </button>
+              <span
+                [innerHTML]="
+                  collapseStatusEvents[i] === false
+                    ? event.description.substring(0, 200)
+                    : event.description
+                "
+              ></span>
+              {{
+                collapseStatusEvents[i] === false &&
+                event.description.length >= 200
+                  ? "..."
+                  : ""
+              }}
+              <div class="container event-link-area">
+                <a
+                  [href]="'/event/' + event.id.toString()"
+                  *ngIf="collapseStatusEvents[i]"
+                  class="event-link"
+                  >View Event</a
+                >
+              </div>
+            </div>
+            <div class="container collapse-area">
+              <i
+                (click)="toggleDescription(i)"
+                [class]="
+                  collapseStatusEvents[i] === false
+                    ? 'bi
+                  bi-caret-down-fill'
+                    : 'bi
+                  bi-caret-up-fill'
+                "
+              ></i>
             </div>
           </div>
         </td>
