@@ -28,8 +28,28 @@
     <div class="card-block">
       <h4 class="card-title">{{ selectedOrg.name }}</h4>
       <p class="card-text">
-        {{ selectedOrg.description }}
-      </p>
+        {{ selectedOrg.description }}</p>
+        <div class="container" *ngIf="orgsEvent">
+          <br><h5>Upcoming Events: </h5><br>
+          <div class="row">
+            <div class="col-8"><h4>{{ orgsEvent.name }}</h4>{{ orgsEvent.description }}</div>
+            <div class="col-4"><br> <br> 
+              <span class="material-icons">
+              today
+              </span>{{ orgsEvent.date }}<br> <br>
+              <span class="material-icons">
+                location_on
+                </span>
+                {{ orgsEvent.location }}<br> <br>
+              <button class="btn btn-primary" (click)="goToEventPageById(orgsEvent.id)">
+                Read more
+              </button>
+            </div>
+            </div>
+        </div>
+        <div *ngIf="!orgsEvent">
+          <br><h5>Currently has No Upcoming Events</h5><br>
+        </div>
     </div>
   </div>
 </div>

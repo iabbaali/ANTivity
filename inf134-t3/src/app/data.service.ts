@@ -59,8 +59,35 @@ export class DataService {
     website;
     social_media;
     image;
+    events;
   }> {
     return this.organizations;
+  }
+
+  public getOrganization(id) {
+    for (let org of this.organizations) {
+      if (org.id === id) {
+        return org;
+      }
+    }
+    return null;
+  }
+
+
+  public getEventsFromOrganization(id): Array<{
+    id;
+    name;
+    description;
+    organization;
+    date;
+    location;
+    organization_id;
+    image;
+  }> {
+    let org = this.getOrganization(id);
+    let events_id = org.events;
+    return this.getEvent(events_id);
+
   }
 
   public createOrganization(org: {
@@ -70,6 +97,7 @@ export class DataService {
     website;
     social_media;
     image;
+    events;
   }) {
     this.organizations.push(org);
   }
