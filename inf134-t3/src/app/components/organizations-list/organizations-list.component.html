@@ -16,7 +16,7 @@
         <td>{{ org.website }}</td>
         <td>{{ org.social_media }}</td>
         <td>
-          <button class="btn btn-primary" (click)="selectOrganization(org)">
+          <button class="btn btn-light" (click)="selectOrganization(org)">
             Show details
           </button>
         </td>
@@ -32,7 +32,7 @@
         <div class="container" *ngIf="orgsEvent">
           <br><h5>Upcoming Events: </h5><br>
           <div class="row">
-            <div class="col-8"><h4>{{ orgsEvent.name }}</h4>{{ orgsEvent.description }}</div>
+            <div class="col-8"><h4>{{ orgsEvent.name }}</h4><p [innerHtml]="orgsEvent.description"></p></div>
             <div class="col-4"><br> <br> 
               <span class="material-icons">
               today
@@ -41,7 +41,7 @@
                 location_on
                 </span>
                 {{ orgsEvent.location }}<br> <br>
-              <button class="btn btn-primary" (click)="goToEventPageById(orgsEvent.id)">
+              <button class="btn btn-light" (click)="goToEventPageById(orgsEvent.id)">
                 Read more
               </button>
             </div>
@@ -53,3 +53,4 @@
     </div>
   </div>
 </div>
+
