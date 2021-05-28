@@ -8,7 +8,7 @@
         "date": "5/17/2021 4:00 PM",
         "location": "Student Center",
         "organization_id": 1,
-        "image": ""
+        "image": "center.jpeg"
       },
       {
         "id": 2,
@@ -18,7 +18,7 @@
         "date": "5/18/2021 2:00 PM",
         "location": "Aldrich Park",
         "organization_id": 3,
-        "image": ""
+        "image": "park.jpeg"
       },
       {
         "id": 3,
@@ -28,7 +28,7 @@
         "date": "5/19/2021 7:00 PM",
         "location": "DBH 6011",
         "organization_id": 2,
-        "image": ""
+        "image": "dbh.jpeg"
       },
       {
         "id": 4,
