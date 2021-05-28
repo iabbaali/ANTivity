@@ -12,6 +12,7 @@ import { EventsListComponent } from './components/events-list/events-list.compon
 import { OrganizationsListComponent } from './components/organizations-list/organizations-list.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { SingleEventComponent } from './pages/single-event/single-event.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,10 @@ import { SingleEventComponent } from './pages/single-event/single-event.componen
     EventsListComponent,
     OrganizationsListComponent,
     ScheduleComponent,
-    SingleEventComponent
+    SingleEventComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

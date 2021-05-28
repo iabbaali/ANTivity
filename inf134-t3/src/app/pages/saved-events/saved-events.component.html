@@ -3,4 +3,29 @@
   <button class="btn btn-primary" (click)="goToSchedulePage()">
     Import Schedule
   </button>
+  <div class="container" id="saved-events-groups" data-selected="All">
+    <div class="row" id="categories">
+      <div class="col">
+        <button id="All" class="btn btn-primary bg-transparent" (click)="showAll()" style="border: none; color: black">
+          All
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="saved-events" style="padding-top: 2em;">
+
+    <div class="row" style="display: none;">
+      <div class="col">
+        <div class="card">
+          <img class="card-img-top" src="" alt="Card image">
+          <div class="card-body">
+            <h5 class="card-title">Event Title Here</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 </div>
