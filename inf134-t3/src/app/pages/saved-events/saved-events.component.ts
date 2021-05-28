@@ -11,13 +11,7 @@ import { DataService } from 'src/app/data.service';
 export class SavedEventsComponent implements OnInit {
 
   allButton: HTMLElement;
-  socialsButton: HTMLElement;
-  workshopsButton: HTMLElement;
-  mustAttendButton: HTMLElement;
-
   categories: string[];
-
-  lightGray: string = "#c4c4c4";
   selectedCatgeory: string = "all";
 
   constructor(private router: Router, private dataservice: DataService) {
@@ -25,9 +19,8 @@ export class SavedEventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.allButton = document.getElementById("All");
-
-    //console.log(eventData);
     this.categories = this.dataservice.getUser(1).saved_event_categories;
+    //console.log(eventData);
     //console.log(this.categories);
     for (let category in this.categories) {
       let catName:string = this.categories[category]
@@ -55,7 +48,6 @@ export class SavedEventsComponent implements OnInit {
       })
       divider.appendChild(divButton);
       document.getElementById("categories").appendChild(divider);
-      
     }
     
   }
