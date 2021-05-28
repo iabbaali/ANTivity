@@ -24,17 +24,35 @@ export class SavedEventsComponent implements OnInit {
     image:string;
   }>} = {};
 
+
   constructor(private router: Router, private dataservice: DataService) {
   }
 
   ngOnInit(): void {
+    let eventIDCategories: { [key: string]: number[]} = {};
     this.allButton = document.getElementById("All");
     this.categories = this.dataservice.getUser(1).saved_event_categories;
     this.savedEvents = this.dataservice.getSavedEvents();
-    //console.log(this.savedEvents.All);
-
+    //console.log(this.savedEvents);
+    for (let key in this.savedEvents) {
+      if (key != "All") {
+        eventIDCategories[key] = [];
+      }
+    }
+    for (let key in this.savedEvents) {
+      if (key != "All") {
+        for (let event in this.savedEvents[key]) {
+          //console.log(this.savedEvents[key][event].id);
+          eventIDCategories[key].push(this.savedEvents[key][event].id);
+        }
+      }
+    }
+    console.log(eventIDCategories);
+    //console.log(this.savedEvents);
     //console.log(eventData);
     //console.log(this.categories);
+
+    // generate user created event categories
     for (let category in this.categories) {
       let catName:string = this.categories[category]
       let divider = document.createElement('div');
@@ -51,17 +69,59 @@ export class SavedEventsComponent implements OnInit {
         document.getElementById("saved-events-groups").dataset.value = catName;
         console.log(catName);
         this.style.color = "black";
-        var allButtons = document.getElementsByClassName("btn btn-primary bg-transparent");
+        let allButtons = document.getElementsByClassName("btn btn-primary bg-transparent");
         for (var i = 0; i < allButtons.length; i++) {
           if (allButtons[i].id != (catName + "Button")) {
             allButtons[i].setAttribute("style", "border: none; color: #c4c4c4");
           }
         }
+        let allEventCards = document.getElementsByClassName("row event-card");
+          for (var i = 0; i < allEventCards.length; i++) {
+            if (eventIDCategories[catName].indexOf(parseInt(allEventCards[i].id)) == -1) {
+              allEventCards[i].setAttribute("style", "display: none; padding-top: 2em;");
+            }
+            else {
+              allEventCards[i].setAttribute("style", "padding-top: 2em;");
+            }
+          }
       })
       divider.appendChild(divButton);
       document.getElementById("categories").appendChild(divider);
     }
-    
+    // Generate event cards
+    for (let eventItem in this.savedEvents.All) {
+      //console.log(this.savedEvents.All[eventItem]);
+
+      let rowDiv = document.createElement("div");
+      rowDiv.className = "row event-card";
+      rowDiv.style.paddingTop = "1em";
+      rowDiv.id = this.savedEvents.All[eventItem].id.toString();
+      let colDiv = document.createElement("div");
+      colDiv.className = "col";
+      let cardDiv = document.createElement("div");
+      cardDiv.className = "card";
+      let cardBodyDiv = document.createElement("div");
+      cardBodyDiv.className = "card-body";
+      let cardTitle = document.createElement("h5");
+      cardTitle.className = "card-title";
+      cardTitle.innerText = this.savedEvents.All[eventItem].name;
+      let cardText = document.createElement("p");
+      cardText.className = "card-text";
+      cardText.innerText = this.savedEvents.All[eventItem].description;
+      let cardImage = document.createElement("img");
+      cardImage.className = "card-img-top";
+      cardImage.src = this.savedEvents.All[eventItem].image;
+      cardImage.alt = "Card image";
+
+      cardBodyDiv.appendChild(cardImage);
+      cardBodyDiv.appendChild(cardTitle);
+      cardBodyDiv.appendChild(cardText);
+      cardDiv.appendChild(cardBodyDiv);
+      colDiv.appendChild(cardDiv);
+      rowDiv.appendChild(colDiv);
+      document.getElementById("saved-events").appendChild(rowDiv);
+    }
+
   }
 
   goToSchedulePage() {
@@ -71,10 +131,14 @@ export class SavedEventsComponent implements OnInit {
   showAll() {
     this.allButton.style.color = "black";
     var allButtons = document.getElementsByClassName("btn btn-primary bg-transparent");
-      for (var i = 1; i < allButtons.length; i++) {
-        allButtons[i].setAttribute("style", "border: none; color: #c4c4c4");
-      }
+    for (var i = 1; i < allButtons.length; i++) {
+      allButtons[i].setAttribute("style", "border: none; color: #c4c4c4");
+    }
     document.getElementById("saved-events-groups").dataset.value = "All";
+    let allEventCards = document.getElementsByClassName("row event-card");
+    for (let i = 0; i < allEventCards.length; i++) {
+      allEventCards[i].setAttribute("style", "padding-top: 2em;");
+    }
     console.log(document.getElementById("saved-events-groups").dataset.value);
   };
 
