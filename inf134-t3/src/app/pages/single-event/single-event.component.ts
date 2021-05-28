@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/data.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-single-event',
@@ -17,7 +18,8 @@ export class SingleEventComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private _location: Location
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +40,7 @@ export class SingleEventComponent implements OnInit {
     this.eventImage = '../../../assets/images/' + this.event.image;
   }
 
-  backToEvents() {
-    this.router.navigateByUrl('/events');
+  backToPreviousPage() {
+    this._location.back();
   }
 }
