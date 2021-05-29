@@ -31,4 +31,11 @@ export class OrganizationsListComponent implements OnInit {
     // TODO: goto the actual event page
     this.router.navigate(['/event/' + event_id]);
   }
+
+  public sortByName(){
+    console.log(this.organizations)
+    this.organizations.sort(function compare(kv1, kv2) {
+        return kv1['name'].localeCompare(kv2['name']);
+      })
+    }
 }
