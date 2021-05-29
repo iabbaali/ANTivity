@@ -3,63 +3,63 @@
     "id": 1,
     "name": "Women in Information and Computer Sciences",
     "description": "WICS is a social and professional non-profit organization at UCI established to help and encourage women to pursue a college degree and a successful career in the computer science field.",
-    "website": "wics.ics.uci.edu",
+    "website": "https://wics.ics.uci.edu",
     "social_media": "@wicsuci",
-    "image": "",
+    "image": "../../../assets/images/orgs_img/wics_logo.png",
     "events": 1
   },
   {
     "id": 2,
     "name": "Hack at UCI",
     "description": "Hack at UCI is a student-run organization established to provide students with a platform to learn, grow, and develop technology of the future. Established in 2013, their mission is to promote, educate, and enhance the community around us by giving students the platform to learn and create technology.",
-    "website": "hack.ics.uci.edu",
+    "website": "https://hack.ics.uci.edu",
     "social_media": "@hackatuci",
-    "image": "",
+    "image": "../../../assets/images/orgs_img/hack_uci.png",
     "events": 3
   },
   {
     "id": 3,
     "name": "Video Game Development Club",
     "description": "The Video Game Development Club (VGDC) at UC Irvine is devoted to providing a community to student game developers. Their mission is to cultivate the game development interest on campus and provide an enriching environment for aspiring student developers to learn and grow.",
-    "website": "sites.google.com/uci.edu/vgdcuci",
+    "website": "https://sites.google.com/uci.edu/vgdcuci",
     "social_media": "@vgdc.uci",
-    "image": "",
+    "image": "../../../assets/images/orgs_img/vgdc.png",
     "events": 2
   },
   {
     "id": 4,
     "name": "SHINING STARS: A YOUTH ARTS OUTREACH PROGRAM",
-    "description": "The “Shining Stars” Dance Organization, with the support of UC Irvine’s Claire Trevor School of the Arts, reaches out to children from all areas of Orange County through dance summer programs. We cultivate creative expression by giving our program participants an outlet for their artistic voices. We spark an interest in dance in higher education and the professional realm through workshops hosted by UCI students and dance professionals. We engage deeper thinking about critical issues in dance through discussions of body image, improvisation, and cultural dances from around the world. We build long-lasting friendships across the community by giving participants a common connection: a love for dance. Our goal is to provide a unique dance experience that positively impacts children physically, mentally, and emotionally.",
+    "description": "We spark an interest in dance in higher education and the professional realm through workshops hosted by UCI students and dance professionals.",
     "website": "https://jazzxchange.org/index.php/projects/shiningstars/",
     "social_media": "@jazzxchange",
-    "image": "",
+    "image": "../../../assets/images/orgs_img/shining_stars.png",
     "events": "" 
   },
   {
     "id": 5,
     "name": "Accunting Association Beta Alpha Psi",
-    "description": "Here at UC Irvine, Accounting Association and Beta Alpha Psi are vibrant student organizations that work together to build relationships between students and the accounting profession. We draw members from all areas of academics, including accounting and management minors, and provide opportunities with students to learn more about the accounting profession as well as facilitate the recruiting process by inviting Big 4, mid-tier, local, and industry firms to speak.    ",
+    "description": "We are vibrant student organizations that work together to build relationships between students and the accounting profession.",
     "website": "https://www.accountinguci.com/",
     "social_media": "@aaucirvine",
-    "image": "",
+    "image": "../../../assets/images/orgs_img/AA.png",
     "events": "" 
   },
   {
     "id": 6,
     "name": "Wushu Club at UCI",
-    "description": "At UCI, the Wushu club aims to foster a competitive, yet inviting environment for Wushu athletes of all skill levels, from beginner to advanced. Wushu, as practiced at UCI, is a non-contact, Chinese martial art, emphasizing on coordination and performance. Wushu, meaning \"martial arts\" represents a collection of all Chinese martial arts, but often, the term is used to refer to the more-modern styles of its traditional counterpart, Kung Fu. For more information stop by to try out the sport first hand (no club fees for the first practice!).",
-    "website": "https://campusgroups.uci.edu/wushuclub/home/i",
+    "description": "At UCI, the Wushu club aims to foster a competitive, yet inviting environment for Wushu athletes of all skill levels, from beginner to advanced. ",
+    "website": "https://campusgroups.uci.edu/wushuclub/home/",
     "social_media": "@wushuclubuci",
-    "image": "",
+    "image": "../../../assets/images/orgs_img/wushu.png",
     "events": "" 
   },
   {
     "id": 7,
     "name": "Undergraduate Business Association (UBA)",
-    "description": "The Undergraduate Business Association (UBA) was founded in 1984 to provide all students at UCI the opportunity to discover a career path based on their business interests and to advance the essential business skills in an effort to build a stepping stone into the business world. Our organization includes a versatile executive board of 9 members as well as club members of all different majors and grade levels. We strive to create well-rounded business-ready individuals who have the tools for success and the character for leadership. We create the business leaders of tomorrow.",
+    "description": "The Undergraduate Business Association (UBA) was founded in 1984 to provide all students at UCI the opportunity to discover a career path based on their business interests and to advance the essential business skills in an effort to build a stepping stone into the business world.",
     "website": "https://ubauci.com/",
     "social_media": "@ubauci",
-    "image": "",
+    "image": "../../../assets/images/orgs_img/UBA.png",
     "events": "" 
   }
 ]

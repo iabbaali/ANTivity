@@ -1,0 +1,22 @@
+input {
+  margin: 10px;
+  width: 70%;
+  align-content: center;
+}
+
+button {
+  margin: 10px;
+  position: relative;
+}
+
+.orgName {
+  font-size: large;
+  color: #e3f9f7;
+  margin: 12px;
+  position: absolute;
+  vertical-align: middle;
+}
+
+.material-icons.location {
+  font-size: 18px;
+}
