@@ -14,27 +14,6 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
     <input />
     <button class="btn btn-light" id="searchButton">Search</button>
   </div>
-  <!-- 
-  <h2>Drag and Drop</h2>
-    <div class="container">
-      <div  id="div1" 
-            (drop)="drop($event)" 
-            (dragover)="allowDrop($event)">
-
-            <img 
-            src="https://images.pexels.com/photos/658687/pexels-photo-658687.jpeg?auto=compress&cs=tinysrgb&h=350" 
-            draggable="true" 
-            (dragstart)="drag($event)" 
-            id="drag1"
-            width="50" 
-            height="50">
-      </div>
-
-      <div id="div2" 
-        (drop)="drop($event)" 
-        (dragover)="allowDrop($event)">
-      </div>  
-    </div> -->
 
   <div id="searchOptions" style="text-align: center">
     <button class="btn btn-success" id="FilterButton">
@@ -70,8 +49,6 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
               >
                 <img
                   src="../../../assets/images/anteater-icon.png"
-                  draggable="true"
-                  (dragstart)="drag($event)"
                   id="drag + {{ event.id }}"
                   width="50"
                   height="50"
@@ -139,51 +116,6 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
     </tbody>
   </table>
 
-  <a class="float" id="menu-share">
-    <i
-      (drop)="drop($event)"
-      (dragover)="allowDrop($event)"
-      class="fa fa-calendar my-float"
-    ></i>
-  </a>
-  <div class="label-container">
-    <div class="label-text">Drag Image of the Event to any Folder</div>
-    <i class="fa fa-play label-arrow"></i>
-  </div>
-  <ul>
-    <li>
-      <a>
-        <i
-          (drop)="drop($event)"
-          (dragover)="allowDrop($event)"
-          class="fa fa-folder my-float"
-        ></i>
-      </a>
-    </li>
-    <li>
-      <a>
-        <i
-          (drop)="drop($event)"
-          (dragover)="allowDrop($event)"
-          class="fa fa-folder my-float"
-        ></i>
-      </a>
-    </li>
-    <li>
-      <a>
-        <i
-          (drop)="drop($event)"
-          (dragover)="allowDrop($event)"
-          class="fa fa-folder my-float"
-        ></i>
-      </a>
-    </li>
-  </ul>
-
-  <!-- <div id="div1" (drop)="drop($event)" (dragover)="allowDrop($event)" class="float">
-    <i class="fa fa-plus my-float"></i>
-  </div> -->
-
   <div class="card text-center border-success" *ngIf="selectedEvent">
     <div class="card-header bg-success"># {{ selectedEvent.id }}</div>
     <div class="card-block">
@@ -210,20 +142,28 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
       </button>
     </div>
     <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label for="category">Drag the event to the desired category.</label>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-primary"
-        (click)="modal.close('Save click')"
+      <p>Drag the event to the desired category.</p>
+      <div class="event-icon">
+        <i
+          class="bi bi-calendar2-event"
+          draggable="true"
+          (dragstart)="drag($event)"
+        ></i>
+      </div>
+      <div
+        *ngFor="let category of folderCategories; let numFolder = index"
+        class="folder-rows"
       >
-        Save
-      </button>
+        <div
+          class="col folder-col"
+          (drop)="dropToFolder($event, numFolder)"
+          (dragover)="allowDrop($event)"
+        >
+          <i class="bi bi-folder2-open"></i>
+          <div></div>
+          <span>{{ category }}</span>
+        </div>
+      </div>
     </div>
   </ng-template>
 </div>

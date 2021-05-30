@@ -131,3 +131,23 @@ a.float:hover + div.label-container {
   background-color: var(--bright-blue);
   color: var(--white);
 }
+
+.folder-rows {
+  display: inline-block;
+}
+
+.event-icon {
+  text-align: center;
+}
+
+.folder-rows i,
+.event-icon i {
+  font-size: 2rem;
+  color: var(--bright-blue);
+  cursor: pointer;
+}
+
+.folder-col {
+  margin: 10px;
+  text-align: center;
+}

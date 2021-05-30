@@ -16,9 +16,11 @@ export class EventsListComponent implements OnInit {
     numeric: true,
     sensitivity: 'base',
   });
-  public doubleClickedEvent = '';
+  public doubleClickedEvent;
   closeResult: string;
   private touchtime = 0;
+  public folderCategories;
+
   constructor(
     public dataService: DataService,
     private modalService: NgbModal
@@ -29,6 +31,7 @@ export class EventsListComponent implements OnInit {
     for (let event of this.events) {
       this.collapseStatusEvents.push(false);
     }
+    this.folderCategories = this.dataService.getUserCategories(0);
   }
 
   openModal(content, index) {
@@ -67,10 +70,6 @@ export class EventsListComponent implements OnInit {
     }
   }
 
-  saveEvent() {
-    console.log('double');
-  }
-
   public selectEvent(event) {
     let table = document.getElementById('table');
     this.selectedEvent = event;
@@ -92,25 +91,13 @@ export class EventsListComponent implements OnInit {
   }
 
   drag(ev) {
-    ev.dataTransfer.setData('text', ev.target.id);
+    ev.dataTransfer.setData('text', this.doubleClickedEvent.name);
   }
 
-  drop(ev) {
+  dropToFolder(ev, folderIndex) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData('text');
-    console.log(ev.dataTransfer);
-    console.log(data);
-    console.log(
-      document.getElementById(data).parentElement.parentElement.parentElement
-    );
-    if (document.getElementById(data).parentElement.id.startsWith('event')) {
-      document.getElementById(
-        data
-      ).parentElement.parentElement.parentElement.style.display = 'none';
-      console.log('test');
-    }
-    ev.target.appendChild(document.getElementById(data));
-    document.getElementById(data).parentNode;
+    console.log(this.doubleClickedEvent);
+    console.log(this.folderCategories[folderIndex]);
   }
 
   public startSort(type) {
