@@ -19,27 +19,46 @@
       <div class="col">
         <button
           id="All"
-          class="btn btn-primary bg-transparent"
-          (click)="showAll()"
+          class="btn btn-primary bg-transparent btn-category-custom"
+          (click)="displayEventsByCategory('All')"
           style="border: none; color: black"
         >
           All
         </button>
       </div>
+      <div class="col" *ngFor="let category of categories; let i = index">
+        <button
+          [id]="category"
+          class="btn btn-primary bg-transparent btn-category-custom"
+          (click)="displayEventsByCategory(category)"
+          style="border: none; color: var(--light-cyan)"
+        >
+          {{ category }}
+        </button>
+      </div>
     </div>
   </div>
-  <div class="container" id="saved-events" style="padding-top: 2em">
-    <!-- Below is how event cards are organized -->
-    <div class="row" style="display: none">
-      <div class="col">
+  <div class="container">
+    <div *ngFor="let event of displayedEvents" class="row">
+      <div class="col-sm-12">
         <div class="card">
-          <img class="card-img-top" src="" alt="Card image" />
-          <div class="card-body">
-            <h5 class="card-title">Event Title Here</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
+          <div class="row card-body">
+            <img
+              class="col-sm-6"
+              [src]="'../../../assets/images/' + event.image"
+              alt="sans"
+            />
+            <div class="col-sm-6 my-auto card-body-custom">
+              <h5 class="card-title">{{ event.name }}</h5>
+              <div class="card-text">
+                <p>{{ event.organization }}</p>
+                <p>{{ event.date }}</p>
+                <p>{{ event.location }}</p>
+              </div>
+              <button class="btn btn-primary" (click)="goToEvent(event.id)">
+                More Information
+              </button>
+            </div>
           </div>
         </div>
       </div>
