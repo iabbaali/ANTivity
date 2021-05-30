@@ -41,7 +41,10 @@
   <div class="container">
     <div *ngFor="let event of displayedEvents" class="row">
       <div class="col-sm-12">
-        <div class="card card-custom">
+        <div
+          class="card card-custom"
+          *ngIf="filterBySchedule === false ? true : event.fits_schedule"
+        >
           <div class="row card-body">
             <img
               class="col-sm-6"

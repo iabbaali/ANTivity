@@ -12,36 +12,23 @@ export class SavedEventsComponent implements OnInit {
   allButton: HTMLElement;
   categories: string[];
   selectedCatgeory: string = 'all';
-  savedEvents: {
-    [key: string]: Array<{
-      id: number;
-      name: string;
-      description: string;
-      organization: string;
-      date: string;
-      location: string;
-      organization_id: number;
-      image: string;
-    }>;
-  } = {};
+  savedEvents = {};
   filterBySchedule = false;
   displayedEvents = [];
 
   constructor(private router: Router, private dataservice: DataService) {}
 
-  showEventBasedOnSchedule(event) {
-    if (this.filterBySchedule) {
-      if (event.id > 8) {
-        return false;
+  ngOnInit(): void {
+    let temp = this.dataservice.getSavedEvents();
+    for (let [key, value] of Object.entries(temp)) {
+      this.savedEvents[key] = [];
+      for (let event of value) {
+        let eventCopy = { ...event };
+        eventCopy['fits_schedule'] = this.isEventAlignWithSchedule(event);
+        this.savedEvents[key].push(eventCopy);
       }
     }
-    console.log(event);
-    return true;
-  }
-
-  ngOnInit(): void {
-    this.savedEvents = this.dataservice.getSavedEvents();
-    this.displayedEvents = this.savedEvents.All;
+    this.displayedEvents = this.savedEvents['All'];
     this.categories = this.dataservice.getCategories();
   }
 
@@ -67,5 +54,12 @@ export class SavedEventsComponent implements OnInit {
       }
     });
     this.displayedEvents = this.savedEvents[category];
+  }
+
+  isEventAlignWithSchedule(event) {
+    if (event.id > 8) {
+      return false;
+    }
+    return true;
   }
 }
