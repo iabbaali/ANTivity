@@ -150,23 +150,45 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
           (dragstart)="drag($event)"
         ></i>
       </div>
-      <div
-        *ngFor="let category of folderCategories; let numFolder = index"
-        class="folder-rows"
-      >
-        <div
-          class="col folder-col"
-          (drop)="dropToFolder($event, numFolder)"
-          (dragover)="allowDrop($event)"
+      <div class="folder-area">
+        <span
+          *ngFor="let category of folderCategories; let numFolder = index"
+          class="folder-rows"
         >
-          <i class="bi bi-folder2-open"></i>
-          <div></div>
-          <span>{{ category }}</span>
-        </div>
+          <div
+            class="col folder-col"
+            (drop)="dropToFolder($event, numFolder)"
+            (dragover)="allowDrop($event)"
+          >
+            <i
+              [class]="
+                numFolder !== 0 ? 'bi bi-folder2-open' : 'bi bi-folder-plus'
+              "
+            ></i>
+            <div></div>
+            <span>{{ category }}</span>
+          </div>
+        </span>
       </div>
       <p *ngIf="showSaveStatus" class="save-status">
         Saved to {{ selectedFolder }}
       </p>
+      <form *ngIf="showForm">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Folder Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="folderInp"
+            name="folderName"
+            [(ngModel)]="newFolderName"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="createFolder()">
+          Save
+        </button>
+      </form>
     </div>
   </ng-template>
 </div>

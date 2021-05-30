@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -22,6 +22,8 @@ export class EventsListComponent implements OnInit {
   public folderCategories;
   public selectedFolder = '';
   public showSaveStatus = false;
+  public showForm = false;
+  @Input() newFolderName = '';
 
   constructor(
     public dataService: DataService,
@@ -33,7 +35,8 @@ export class EventsListComponent implements OnInit {
     for (let event of this.events) {
       this.collapseStatusEvents.push(false);
     }
-    this.folderCategories = this.dataService.getUserCategories(0);
+    this.folderCategories = this.dataService.getCategories();
+    this.folderCategories = ['New'].concat(this.folderCategories);
   }
 
   openModal(content, index) {
@@ -98,9 +101,33 @@ export class EventsListComponent implements OnInit {
 
   dropToFolder(ev, folderIndex) {
     ev.preventDefault();
-    console.log(this.doubleClickedEvent);
-    this.selectedFolder = this.folderCategories[folderIndex];
-    console.log(this.folderCategories[folderIndex]);
+    if (folderIndex !== 0) {
+      this.selectedFolder = this.folderCategories[folderIndex];
+      this.dataService.addToSavedEvents(
+        this.selectedFolder,
+        this.doubleClickedEvent
+      );
+      setTimeout(() => {
+        this.showSaveStatus = true;
+      }, 1);
+      setTimeout(() => {
+        this.showSaveStatus = false;
+        this.selectedFolder = '';
+      }, 3000);
+    } else {
+      this.showForm = true;
+    }
+  }
+
+  createFolder() {
+    this.dataService.addToCategories(this.newFolderName);
+    this.folderCategories.push(this.newFolderName);
+    this.showForm = false;
+    this.selectedFolder = this.newFolderName;
+    this.dataService.addToSavedEvents(
+      this.newFolderName,
+      this.doubleClickedEvent
+    );
     setTimeout(() => {
       this.showSaveStatus = true;
     }, 1);

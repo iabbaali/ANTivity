@@ -147,6 +147,10 @@ a.float:hover + div.label-container {
   cursor: pointer;
 }
 
+.event-icon i {
+  color: var(--gold);
+}
+
 .folder-col {
   margin: 10px;
   text-align: center;
@@ -155,4 +159,8 @@ a.float:hover + div.label-container {
 .save-status {
   text-align: center;
   color: var(--bright-blue);
+}
+
+.folder-area {
+  text-align: center;
 }

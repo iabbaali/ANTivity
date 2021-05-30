@@ -14,6 +14,7 @@ export class DataService {
   schedule = (scheduleData as any).default;
   users = (userData as any).default;
   savedEvents = (savedEventData as any).default;
+  categories = this.users[0].saved_event_categories;
 
   constructor() {}
 
@@ -155,5 +156,18 @@ export class DataService {
     }>;
   } {
     return this.savedEvents;
+  }
+
+  public addToSavedEvents(folder, event) {
+    this.savedEvents[folder].push(event);
+  }
+
+  public addToCategories(folder) {
+    this.categories.push(folder);
+    this.savedEvents[folder] = [];
+  }
+
+  public getCategories() {
+    return this.categories;
   }
 }
