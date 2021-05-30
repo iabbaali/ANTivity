@@ -151,3 +151,8 @@ a.float:hover + div.label-container {
   margin: 10px;
   text-align: center;
 }
+
+.save-status {
+  text-align: center;
+  color: var(--bright-blue);
+}

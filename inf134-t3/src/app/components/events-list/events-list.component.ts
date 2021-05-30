@@ -20,6 +20,8 @@ export class EventsListComponent implements OnInit {
   closeResult: string;
   private touchtime = 0;
   public folderCategories;
+  public selectedFolder = '';
+  public showSaveStatus = false;
 
   constructor(
     public dataService: DataService,
@@ -97,7 +99,15 @@ export class EventsListComponent implements OnInit {
   dropToFolder(ev, folderIndex) {
     ev.preventDefault();
     console.log(this.doubleClickedEvent);
+    this.selectedFolder = this.folderCategories[folderIndex];
     console.log(this.folderCategories[folderIndex]);
+    setTimeout(() => {
+      this.showSaveStatus = true;
+    }, 1);
+    setTimeout(() => {
+      this.showSaveStatus = false;
+      this.selectedFolder = '';
+    }, 3000);
   }
 
   public startSort(type) {

@@ -164,6 +164,9 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
           <span>{{ category }}</span>
         </div>
       </div>
+      <p *ngIf="showSaveStatus" class="save-status">
+        Saved to {{ selectedFolder }}
+      </p>
     </div>
   </ng-template>
 </div>
