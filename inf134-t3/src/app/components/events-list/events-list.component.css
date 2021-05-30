@@ -131,3 +131,36 @@ a.float:hover + div.label-container {
   background-color: var(--bright-blue);
   color: var(--white);
 }
+
+.folder-rows {
+  display: inline-block;
+}
+
+.event-icon {
+  text-align: center;
+}
+
+.folder-rows i,
+.event-icon i {
+  font-size: 2rem;
+  color: var(--bright-blue);
+  cursor: pointer;
+}
+
+.event-icon i {
+  color: var(--gold);
+}
+
+.folder-col {
+  margin: 10px;
+  text-align: center;
+}
+
+.save-status {
+  text-align: center;
+  color: var(--bright-blue);
+}
+
+.folder-area {
+  text-align: center;
+}

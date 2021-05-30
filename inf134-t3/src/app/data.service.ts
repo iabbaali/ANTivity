@@ -14,6 +14,7 @@ export class DataService {
   schedule = (scheduleData as any).default;
   users = (userData as any).default;
   savedEvents = (savedEventData as any).default;
+  categories = this.users[0].saved_event_categories;
 
   constructor() {}
 
@@ -73,7 +74,6 @@ export class DataService {
     return null;
   }
 
-
   public getEventsFromOrganization(id): Array<{
     id;
     name;
@@ -87,7 +87,6 @@ export class DataService {
     let org = this.getOrganization(id);
     let events_id = org.events;
     return this.getEvent(events_id);
-
   }
 
   public createOrganization(org: {
@@ -124,7 +123,11 @@ export class DataService {
     name;
     saved_event_categories;
   }> {
-    return this.users
+    return this.users;
+  }
+
+  public getUserCategories(i) {
+    return this.users[i].saved_event_categories;
   }
 
   public getUser(id) {
@@ -136,25 +139,35 @@ export class DataService {
     return null;
   }
 
-  public createUser(user: {
-    id;
-    name;
-    saved_event_categories;
-  }) {
+  public createUser(user: { id; name; saved_event_categories }) {
     this.users.push(user);
   }
 
-  public getSavedEvents(): { [key: string]: Array<{
-    id:number;
-    name:string;
-    description:string;
-    organization:string;
-    date:string;
-    location:string;
-    organization_id:number;
-    image:string;
-  }>} {
+  public getSavedEvents(): {
+    [key: string]: Array<{
+      id: number;
+      name: string;
+      description: string;
+      organization: string;
+      date: string;
+      location: string;
+      organization_id: number;
+      image: string;
+    }>;
+  } {
     return this.savedEvents;
   }
 
+  public addToSavedEvents(folder, event) {
+    this.savedEvents[folder].push(event);
+  }
+
+  public addToCategories(folder) {
+    this.categories.push(folder);
+    this.savedEvents[folder] = [];
+  }
+
+  public getCategories() {
+    return this.categories;
+  }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/data.service';
-import { Router } from '@angular/router';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-events-list',
@@ -16,12 +16,62 @@ export class EventsListComponent implements OnInit {
     numeric: true,
     sensitivity: 'base',
   });
-  constructor(public dataService: DataService, private router: Router) {}
+  public doubleClickedEvent;
+  closeResult: string;
+  private touchtime = 0;
+  public folderCategories;
+  public selectedFolder = '';
+  public showSaveStatus = false;
+  public showForm = false;
+  @Input() newFolderName = '';
+
+  constructor(
+    public dataService: DataService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
     this.events = this.dataService.getEvents();
     for (let event of this.events) {
       this.collapseStatusEvents.push(false);
+    }
+    this.folderCategories = this.dataService.getCategories();
+    this.folderCategories = ['New'].concat(this.folderCategories);
+  }
+
+  openModal(content, index) {
+    if (this.touchtime == 0) {
+      // set first click
+      this.touchtime = new Date().getTime();
+    } else {
+      // compare first click to this click and see if they occurred within double click threshold
+      if (new Date().getTime() - this.touchtime < 800) {
+        // double click occurred
+        this.touchtime = 0;
+        this.doubleClickedEvent = this.events[index];
+        this.modalService
+          .open(content, { ariaLabelledBy: 'modal-basic-title' })
+          .result.then(
+            (result) => {
+              this.closeResult = `Closed with: ${result}`;
+            },
+            (reason) => {
+              this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+            }
+          );
+      } else {
+        // not a double click so set as a new first click
+        this.touchtime = new Date().getTime();
+      }
+    }
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
     }
   }
 
@@ -46,25 +96,45 @@ export class EventsListComponent implements OnInit {
   }
 
   drag(ev) {
-    ev.dataTransfer.setData('text', ev.target.id);
+    ev.dataTransfer.setData('text', this.doubleClickedEvent.name);
   }
 
-  drop(ev) {
+  dropToFolder(ev, folderIndex) {
     ev.preventDefault();
-    var data = ev.dataTransfer.getData('text');
-    console.log(ev.dataTransfer);
-    console.log(data);
-    console.log(
-      document.getElementById(data).parentElement.parentElement.parentElement
-    );
-    if (document.getElementById(data).parentElement.id.startsWith('event')) {
-      document.getElementById(
-        data
-      ).parentElement.parentElement.parentElement.style.display = 'none';
-      console.log('test');
+    if (folderIndex !== 0) {
+      this.selectedFolder = this.folderCategories[folderIndex];
+      this.dataService.addToSavedEvents(
+        this.selectedFolder,
+        this.doubleClickedEvent
+      );
+      setTimeout(() => {
+        this.showSaveStatus = true;
+      }, 1);
+      setTimeout(() => {
+        this.showSaveStatus = false;
+        this.selectedFolder = '';
+      }, 3000);
+    } else {
+      this.showForm = true;
     }
-    ev.target.appendChild(document.getElementById(data));
-    document.getElementById(data).parentNode;
+  }
+
+  createFolder() {
+    this.dataService.addToCategories(this.newFolderName);
+    this.folderCategories.push(this.newFolderName);
+    this.showForm = false;
+    this.selectedFolder = this.newFolderName;
+    this.dataService.addToSavedEvents(
+      this.newFolderName,
+      this.doubleClickedEvent
+    );
+    setTimeout(() => {
+      this.showSaveStatus = true;
+    }, 1);
+    setTimeout(() => {
+      this.showSaveStatus = false;
+      this.selectedFolder = '';
+    }, 3000);
   }
 
   public startSort(type) {

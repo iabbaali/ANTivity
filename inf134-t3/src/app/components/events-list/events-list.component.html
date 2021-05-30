@@ -14,30 +14,8 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
     <input />
     <button class="btn btn-light" id="searchButton">Search</button>
   </div>
-  <!-- 
-  <h2>Drag and Drop</h2>
-    <div class="container">
-      <div  id="div1" 
-            (drop)="drop($event)" 
-            (dragover)="allowDrop($event)">
-
-            <img 
-            src="https://images.pexels.com/photos/658687/pexels-photo-658687.jpeg?auto=compress&cs=tinysrgb&h=350" 
-            draggable="true" 
-            (dragstart)="drag($event)" 
-            id="drag1"
-            width="50" 
-            height="50">
-      </div>
-
-      <div id="div2" 
-        (drop)="drop($event)" 
-        (dragover)="allowDrop($event)">
-      </div>  
-    </div> -->
 
   <div id="searchOptions" style="text-align: center">
-    <!-- TODO: Question if we need a filter option in our program -->
     <button class="btn btn-success" id="FilterButton">
       <i class="fa fa-filter"></i> Filters
     </button>
@@ -52,16 +30,15 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
     <thead>
       <tr>
         <th style="text-align: center">Events</th>
-        <!-- <th>Organization</th>
-        <th>Date</th>
-        <th>Location</th>
-        <th>Actions</th> -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let event of events; let i = index">
         <td>
-          <div class="card border-success">
+          <div
+            class="card border-success event-card"
+            (click)="openModal(content, i)"
+          >
             <!-- Header -->
             <div class="card-header bg-success">
               <!-- TODO: don't forget about adding {{events.img}} to have custom imgs for events -->
@@ -72,8 +49,6 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
               >
                 <img
                   src="../../../assets/images/anteater-icon.png"
-                  draggable="true"
-                  (dragstart)="drag($event)"
                   id="drag + {{ event.id }}"
                   width="50"
                   height="50"
@@ -137,64 +112,9 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
             </div>
           </div>
         </td>
-
-        <!-- <td>{{ event.name }}</td>
-        <td>{{ event.organization }}</td>
-        <td>{{ event.date }}</td>
-        <td>{{ event.location }}</td>
-        <td>
-          <button class="btn btn-primary" (click)="selectEvent(event)">
-            Show details
-          </button>
-        </td> -->
       </tr>
     </tbody>
   </table>
-
-  <a class="float" id="menu-share">
-    <i
-      (drop)="drop($event)"
-      (dragover)="allowDrop($event)"
-      class="fa fa-calendar my-float"
-    ></i>
-  </a>
-  <div class="label-container">
-    <div class="label-text">Drag Image of the Event to any Folder</div>
-    <i class="fa fa-play label-arrow"></i>
-  </div>
-  <ul>
-    <li>
-      <a>
-        <i
-          (drop)="drop($event)"
-          (dragover)="allowDrop($event)"
-          class="fa fa-folder my-float"
-        ></i>
-      </a>
-    </li>
-    <li>
-      <a>
-        <i
-          (drop)="drop($event)"
-          (dragover)="allowDrop($event)"
-          class="fa fa-folder my-float"
-        ></i>
-      </a>
-    </li>
-    <li>
-      <a>
-        <i
-          (drop)="drop($event)"
-          (dragover)="allowDrop($event)"
-          class="fa fa-folder my-float"
-        ></i>
-      </a>
-    </li>
-  </ul>
-
-  <!-- <div id="div1" (drop)="drop($event)" (dragover)="allowDrop($event)" class="float">
-    <i class="fa fa-plus my-float"></i>
-  </div> -->
 
   <div class="card text-center border-success" *ngIf="selectedEvent">
     <div class="card-header bg-success"># {{ selectedEvent.id }}</div>
@@ -207,4 +127,68 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
       <a [href]="'/event/' + selectedEvent.id.toString()">Click Here</a>
     </div>
   </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">
+        {{ doubleClickedEvent.name }}
+      </h4>
+      <button
+        type="button"
+        class="close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Drag the event to the desired category.</p>
+      <div class="event-icon">
+        <i
+          class="bi bi-calendar2-event"
+          draggable="true"
+          (dragstart)="drag($event)"
+        ></i>
+      </div>
+      <div class="folder-area">
+        <span
+          *ngFor="let category of folderCategories; let numFolder = index"
+          class="folder-rows"
+        >
+          <div
+            class="col folder-col"
+            (drop)="dropToFolder($event, numFolder)"
+            (dragover)="allowDrop($event)"
+          >
+            <i
+              [class]="
+                numFolder !== 0 ? 'bi bi-folder2-open' : 'bi bi-folder-plus'
+              "
+            ></i>
+            <div></div>
+            <span>{{ category }}</span>
+          </div>
+        </span>
+      </div>
+      <p *ngIf="showSaveStatus" class="save-status">
+        Saved to {{ selectedFolder }}
+      </p>
+      <form *ngIf="showForm">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Folder Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="folderInp"
+            name="folderName"
+            [(ngModel)]="newFolderName"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary" (click)="createFolder()">
+          Save
+        </button>
+      </form>
+    </div>
+  </ng-template>
 </div>

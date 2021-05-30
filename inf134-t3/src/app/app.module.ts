@@ -13,6 +13,7 @@ import { OrganizationsListComponent } from './components/organizations-list/orga
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { SingleEventComponent } from './pages/single-event/single-event.component';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     ScheduleComponent,
     SingleEventComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
