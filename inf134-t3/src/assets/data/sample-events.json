@@ -25,7 +25,7 @@
     "organization": "Hack",
     "description": "Hack at UCI will be hosting one of our many networking events of the year at Donald Bren Hall at 7PM on May 19th, 2021.<br/><br/>This event will include guest speakers from, but not limited to:<br/>- Facebook<br/>- Apple<br/>- Ingram Micro<br/>- urSpace<br/><br/>This is a great opportunity to meet some industry professionals and fellow students who are interested in the same fields. Make sure to have your linkedIn ready to connect!",
     "date": "5/19/2021 7:00 PM",
-    "location": "DBH 6011",
+    "location": "Bren Hall 6011",
     "organization_id": 2,
     "image": "dbh.jpeg"
   },
@@ -35,7 +35,7 @@
     "organization": "Patient Project",
     "description": "Recite your poetry and prose to other students! Get exposed to some of the lovely writers in our community! Open to all UCI students!",
     "date": "5/22/2021 4:00 PM",
-    "location": "RH 401",
+    "location": "Rowland Hall 401",
     "organization_id": 4,
     "image": "rowland.jpg"
   },
@@ -45,7 +45,7 @@
     "organization": "ASUCI",
     "description": "ASUCI’s Office of Academic Affairs Speakers Commission is proud to present our final speaker of the year for our ZotTalks: Influencer Insights! We are proud to present Anna Akana as our guest speaker on May 26th from 6pm-7pm.",
     "date": "5/15/2021 10:00 AM",
-    "location": "ICS 121",
+    "location": "Information and Computer Science 121",
     "organization_id": 9,
     "image": "ics.jpg"
   },
@@ -55,7 +55,7 @@
     "organization": "ASUCI",
     "description": "The Office of the External Vice President and the ASUCI Senate would like to invite you to our collaboration event, Tuition Awareness Town Hall to get a better understanding of tuition and how student fees are assessed at UCI.",
     "date": "5/26/2021 7:00 PM",
-    "location": "SLH 302",
+    "location": "Social Science Lab 302",
     "organization_id": 9,
     "image": "slh.jpg"
   },
@@ -75,7 +75,7 @@
     "organization": "Campuswide Honors Student Council",
     "description": "Pick up those paint tools and brush up on your artistic skills! Please come and join our fun stress-relief creative event for coffee hour this Friday!",
     "date": "5/28/2021 9:00 AM",
-    "location": "SST 202",
+    "location": "Social Science Tower 202",
     "organization_id": 8,
     "image": "sst.png"
   },
@@ -105,9 +105,8 @@
     "organization": "Center For Student Wellness & Health Promotion",
     "description": "Are you graduating and entering a new job? Or just curious to learn more about the intersection of alcohol and other drugs in the workplace? Join us to learn more about how alcohol and other drug policies in the workplace impact you as an employee, and how your substance use may affect your work.",
     "date": "5/27/2021 1:00 PM",
-    "location": "SSH 101",
+    "location": "Social Science Hall 101",
     "organization_id": 12,
     "image": "ssh.jpg"
   }
-
 ]
