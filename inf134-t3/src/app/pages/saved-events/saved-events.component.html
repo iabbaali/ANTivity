@@ -1,31 +1,79 @@
 <div id="saved-events-area">
-  <button class="btn btn-primary" (click)="goToSchedulePage()">
-    Import Schedule
-  </button>
+  <div class="saved-buttons">
+    <div class="import-area" (click)="goToSchedulePage()">
+      <i class="bi bi-upload import-icon"></i>
+      <span class="import-label">Import Schedule</span>
+    </div>
+    <div class="schedule-toggle">
+      <label class="switch">
+        <input type="checkbox" (click)="toggleSchedule()" />
+        <span class="slider round"></span> </label
+      ><span class="toggle-label">Filter by My Schedule</span>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
   <div class="container" id="saved-events-groups" data-selected="All">
     <div class="row" id="categories">
       <div class="col">
-        <button id="All" class="btn btn-primary bg-transparent" (click)="showAll()" style="border: none; color: black">
+        <button
+          id="All"
+          class="btn btn-primary bg-transparent btn-category-custom"
+          (click)="displayEventsByCategory('All')"
+          style="border: none; color: black"
+        >
           All
+        </button>
+      </div>
+      <div class="col" *ngFor="let category of categories; let i = index">
+        <button
+          [id]="category"
+          class="btn btn-primary bg-transparent btn-category-custom"
+          (click)="displayEventsByCategory(category)"
+          style="border: none; color: var(--light-cyan)"
+        >
+          {{ category }}
         </button>
       </div>
     </div>
   </div>
-  <div class="container" id="saved-events" style="padding-top: 2em;">
-
-    <!-- Below is how event cards are organized -->
-    <div class="row" style="display: none;">
-      <div class="col">
-        <div class="card">
-          <img class="card-img-top" src="" alt="Card image">
-          <div class="card-body">
-            <h5 class="card-title">Event Title Here</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <div class="container">
+    <div *ngFor="let event of displayedEvents" class="row">
+      <div class="col-sm-12">
+        <div
+          class="card card-custom"
+          *ngIf="filterBySchedule === false ? true : event.fits_schedule"
+        >
+          <div class="row card-body">
+            <img
+              class="col-sm-6"
+              [src]="'../../../assets/images/' + event.image"
+              alt="sans"
+            />
+            <div class="col-sm-6 my-auto card-body-custom">
+              <h4 class="card-title">{{ event.name }}</h4>
+              <div class="card-text">
+                <span class="icon-area">
+                  <i class="bi bi-people bi-custom"></i>
+                  <span>{{ event.organization }}</span>
+                </span>
+                <span class="icon-area">
+                  <i class="bi bi-calendar-week bi-custom"></i
+                  ><span>{{ event.date }}</span>
+                </span>
+                <span class="icon-area">
+                  <i class="bi bi-map bi-custom"></i
+                  ><span>{{ event.location }}</span>
+                </span>
+              </div>
+              <button class="btn btn-primary" (click)="goToEvent(event.id)">
+                More Information
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-
   </div>
 </div>

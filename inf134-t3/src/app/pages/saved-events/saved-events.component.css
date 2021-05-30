@@ -1,3 +1,132 @@
 #saved-events-area {
-  margin-top: 85px;
+  margin: 25px;
+}
+
+.card-img-custom {
+  max-height: 500px;
+  max-width: 600px;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-custom {
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.card-custom:hover {
+  background-color: var(--light-cyan);
+}
+
+.icon-area i {
+  margin-right: 10px;
+}
+
+.icon-area {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 2;
+}
+
+.btn-category-custom:focus,
+.btn-category-custom {
+  outline: none;
+  border: none;
+}
+
+/* Toggle Button */
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--dark-blue);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--dark-blue);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 30px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.toggle-label {
+  margin: 10px;
+  font-size: 1rem;
+  color: var(--white);
+}
+
+.schedule-toggle {
+  float: right;
+}
+
+.import-icon {
+  font-size: 1.5rem;
+  color: var(--white);
+}
+
+.import-label {
+  margin-left: 10px;
+  color: var(--white);
+}
+
+.import-area {
+  cursor: pointer;
+  text-align: right;
+  margin-right: 8px;
+}
+
+.saved-buttons {
+  float: right;
 }

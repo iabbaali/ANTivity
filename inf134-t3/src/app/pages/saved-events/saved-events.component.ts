@@ -9,145 +9,86 @@ import { DataService } from 'src/app/data.service';
   styleUrls: ['./saved-events.component.css'],
 })
 export class SavedEventsComponent implements OnInit {
-
   allButton: HTMLElement;
   categories: string[];
-  selectedCatgeory: string = "all";
-  savedEvents: { [key: string]: Array<{
-    id:number;
-    name:string;
-    description:string;
-    organization:string;
-    date:string;
-    location:string;
-    organization_id:number;
-    image:string;
-  }>} = {};
+  selectedCatgeory: string = 'all';
+  savedEvents = {};
+  filterBySchedule = false;
+  displayedEvents = [];
+  schedule = [];
 
-
-  constructor(private router: Router, private dataservice: DataService) {
-  }
+  constructor(private router: Router, private dataservice: DataService) {}
 
   ngOnInit(): void {
-    let eventIDCategories: { [key: string]: number[]} = {};
-    this.allButton = document.getElementById("All");
-    this.categories = this.dataservice.getUser(1).saved_event_categories;
-    this.savedEvents = this.dataservice.getSavedEvents();
-    //console.log(this.savedEvents);
-    for (let key in this.savedEvents) {
-      if (key != "All") {
-        eventIDCategories[key] = [];
+    let temp = this.dataservice.getSavedEvents();
+    this.schedule = this.dataservice.getSchedule();
+    for (let [key, value] of Object.entries(temp)) {
+      this.savedEvents[key] = [];
+      for (let event of value) {
+        let eventCopy = { ...event };
+        eventCopy['fits_schedule'] = this.isEventAlignWithSchedule(event);
+        this.savedEvents[key].push(eventCopy);
       }
     }
-    for (let key in this.savedEvents) {
-      if (key != "All") {
-        for (let event in this.savedEvents[key]) {
-          //console.log(this.savedEvents[key][event].id);
-          eventIDCategories[key].push(this.savedEvents[key][event].id);
-        }
-      }
-    }
-    console.log(eventIDCategories);
-    //console.log(this.savedEvents);
-    //console.log(eventData);
-    //console.log(this.categories);
+    this.displayedEvents = this.savedEvents['All'];
+    this.categories = this.dataservice.getCategories();
 
-    // generate user created event categories
-    for (let category in this.categories) {
-      let catName:string = this.categories[category]
-      let divider = document.createElement('div');
-      divider.id = this.categories[category];
-      divider.className = "col";
+    console.log(this.schedule);
+  }
 
-      let divButton = document.createElement('button');
-      divButton.id = this.categories[category] + "Button";
-      divButton.innerText = this.categories[category];
-      divButton.className = "btn btn-primary bg-transparent";
-      divButton.style.border = "none";
-      divButton.style.color = "#c4c4c4";
-      divButton.addEventListener("click", function() {
-        document.getElementById("saved-events-groups").dataset.value = catName;
-        console.log(catName);
-        this.style.color = "black";
-        let allButtons = document.getElementsByClassName("btn btn-primary bg-transparent");
-        for (var i = 0; i < allButtons.length; i++) {
-          if (allButtons[i].id != (catName + "Button")) {
-            allButtons[i].setAttribute("style", "border: none; color: #c4c4c4");
-          }
-        }
-        let allEventCards = document.getElementsByClassName("row event-card");
-          for (var i = 0; i < allEventCards.length; i++) {
-            if (eventIDCategories[catName].indexOf(parseInt(allEventCards[i].id)) == -1) {
-              allEventCards[i].setAttribute("style", "display: none; padding-top: 2em;");
-            }
-            else {
-              allEventCards[i].setAttribute("style", "padding-top: 2em;");
-            }
-          }
-      })
-      divider.appendChild(divButton);
-      document.getElementById("categories").appendChild(divider);
-    }
-    // Generate event cards
-    for (let eventItem in this.savedEvents.All) {
-      //console.log(this.savedEvents.All[eventItem]);
-
-      let rowDiv = document.createElement("div");
-      rowDiv.className = "row event-card justify-content-md-center";
-      rowDiv.style.paddingTop = "1em";
-      rowDiv.id = this.savedEvents.All[eventItem].id.toString();
-      let colDiv = document.createElement("div");
-      colDiv.className = "col-md-6";
-      let cardDiv = document.createElement("div");
-      cardDiv.className = "card";
-      let cardBodyDiv = document.createElement("div");
-      cardBodyDiv.className = "card-body";
-      let cardTitle = document.createElement("h5");
-      cardTitle.className = "card-title";
-      cardTitle.innerText = this.savedEvents.All[eventItem].name;
-      let cardOrg = document.createElement("h6");
-      cardOrg.className = "card-title";
-      cardOrg.innerText = this.savedEvents.All[eventItem].organization;
-      let cardDate = document.createElement("h6");
-      cardDate.className = "card-title";
-      cardDate.innerText = this.savedEvents.All[eventItem].date + " - " + this.savedEvents.All[eventItem].location;
-      let cardText = document.createElement("p");
-      cardText.className = "card-text";
-      cardText.innerHTML = this.savedEvents.All[eventItem].description;
-      let cardImage = document.createElement("img");
-      cardImage.className = "card-img-top";
-      cardImage.src = "../../../assets/images/" + this.savedEvents.All[eventItem].image;
-      cardImage.alt = "Card image";
-
-      cardBodyDiv.appendChild(cardImage);
-      cardBodyDiv.appendChild(cardTitle);
-      cardBodyDiv.appendChild(cardOrg);
-      cardBodyDiv.appendChild(cardDate);
-      cardBodyDiv.appendChild(cardText);
-      cardDiv.appendChild(cardBodyDiv);
-      colDiv.appendChild(cardDiv);
-      rowDiv.appendChild(colDiv);
-      document.getElementById("saved-events").appendChild(rowDiv);
-    }
-
+  toggleSchedule() {
+    this.filterBySchedule = !this.filterBySchedule;
   }
 
   goToSchedulePage() {
     this.router.navigateByUrl('/schedule');
   }
 
-  showAll() {
-    this.allButton.style.color = "black";
-    var allButtons = document.getElementsByClassName("btn btn-primary bg-transparent");
-    for (var i = 1; i < allButtons.length; i++) {
-      allButtons[i].setAttribute("style", "border: none; color: #c4c4c4");
-    }
-    document.getElementById("saved-events-groups").dataset.value = "All";
-    let allEventCards = document.getElementsByClassName("row event-card justify-content-md-center");
-    for (let i = 0; i < allEventCards.length; i++) {
-      allEventCards[i].setAttribute("style", "padding-top: 2em;");
-    }
-    console.log(document.getElementById("saved-events-groups").dataset.value);
-  };
+  goToEvent(id) {
+    this.router.navigateByUrl('/event/' + id.toString());
+  }
 
+  displayEventsByCategory(category) {
+    let buttons = document.querySelectorAll('.btn-category-custom');
+    buttons.forEach((button) => {
+      if (button.id === category) {
+        button.setAttribute('style', ' color: black');
+      } else {
+        button.setAttribute('style', ' color: var(--light-cyan');
+      }
+    });
+    this.displayedEvents = this.savedEvents[category];
+  }
+
+  isEventAlignWithSchedule(event) {
+    for (let [building, value] of Object.entries(this.schedule)) {
+      if (event.location.includes(building)) {
+        let date = new Date(event.date);
+        let eventDay = new Intl.DateTimeFormat('en-US', {
+          weekday: 'long',
+        }).format(date);
+        for (let options of value) {
+          let pieces1 = options[1].split(':');
+          let startHr = parseInt(pieces1[0]);
+          let startMin = parseInt(pieces1[1]);
+          let startTime = startHr * 60 + startMin;
+
+          let pieces2 = options[2].split(':');
+          let endHr = parseInt(pieces2[0]);
+          let endMin = parseInt(pieces2[1]);
+          let endTime = endHr * 60 + endMin;
+
+          for (let day of options[0]) {
+            if (day === eventDay) {
+              let eventTime = date.getHours() * 60 + date.getMinutes();
+              if (eventTime >= startTime - 30 && eventTime <= endTime + 30) {
+                return true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
 }
