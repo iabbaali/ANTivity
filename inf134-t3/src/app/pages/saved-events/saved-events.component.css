@@ -12,6 +12,25 @@
   margin-right: auto;
 }
 
+.card-custom {
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.card-custom:hover {
+  background-color: var(--light-cyan);
+}
+
+.icon-area i {
+  margin-right: 10px;
+}
+
+.icon-area {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 2;
+}
+
 .btn-category-custom:focus,
 .btn-category-custom {
   outline: none;

@@ -41,7 +41,7 @@
   <div class="container">
     <div *ngFor="let event of displayedEvents" class="row">
       <div class="col-sm-12">
-        <div class="card">
+        <div class="card card-custom">
           <div class="row card-body">
             <img
               class="col-sm-6"
@@ -49,11 +49,20 @@
               alt="sans"
             />
             <div class="col-sm-6 my-auto card-body-custom">
-              <h5 class="card-title">{{ event.name }}</h5>
+              <h4 class="card-title">{{ event.name }}</h4>
               <div class="card-text">
-                <p>{{ event.organization }}</p>
-                <p>{{ event.date }}</p>
-                <p>{{ event.location }}</p>
+                <span class="icon-area">
+                  <i class="bi bi-people bi-custom"></i>
+                  <span>{{ event.organization }}</span>
+                </span>
+                <span class="icon-area">
+                  <i class="bi bi-calendar-week bi-custom"></i
+                  ><span>{{ event.date }}</span>
+                </span>
+                <span class="icon-area">
+                  <i class="bi bi-map bi-custom"></i
+                  ><span>{{ event.location }}</span>
+                </span>
               </div>
               <button class="btn btn-primary" (click)="goToEvent(event.id)">
                 More Information
