@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
-import { Router } from '@angular/router';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-events-list',
@@ -16,13 +16,59 @@ export class EventsListComponent implements OnInit {
     numeric: true,
     sensitivity: 'base',
   });
-  constructor(public dataService: DataService, private router: Router) {}
+  public doubleClickedEvent = '';
+  closeResult: string;
+  private touchtime = 0;
+  constructor(
+    public dataService: DataService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
     this.events = this.dataService.getEvents();
     for (let event of this.events) {
       this.collapseStatusEvents.push(false);
     }
+  }
+
+  openModal(content, index) {
+    if (this.touchtime == 0) {
+      // set first click
+      this.touchtime = new Date().getTime();
+    } else {
+      // compare first click to this click and see if they occurred within double click threshold
+      if (new Date().getTime() - this.touchtime < 800) {
+        // double click occurred
+        this.touchtime = 0;
+        this.doubleClickedEvent = this.events[index];
+        this.modalService
+          .open(content, { ariaLabelledBy: 'modal-basic-title' })
+          .result.then(
+            (result) => {
+              this.closeResult = `Closed with: ${result}`;
+            },
+            (reason) => {
+              this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+            }
+          );
+      } else {
+        // not a double click so set as a new first click
+        this.touchtime = new Date().getTime();
+      }
+    }
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  saveEvent() {
+    console.log('double');
   }
 
   public selectEvent(event) {
