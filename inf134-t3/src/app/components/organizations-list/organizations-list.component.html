@@ -93,45 +93,36 @@
                 <div class="container" *ngIf="orgsEvent">
                   <br />
                   <h6>
-                    <i class="bi bi-calendar2-event bi-event-custom"
-                      ><span>Upcoming Events</span></i
-                    >
+                    <span>Upcoming Events</span>
                   </h6>
                   <br />
                   <div class="row">
+                    <div class="col" style="text-align: right; color: #aaaaaa">
+                      {{ orgsEvent.date.split(" ")[0] }}
+                    </div>
                     <div class="col-1"></div>
-                    <div class="col-4">{{ orgsEvent.date.split(" ")[0] }}</div>
+                    <div
+                      class="col"
+                      (click)="goToEventPageById(orgsEvent.id)"
+                      style="
+                        cursor: pointer;
+                        font-weight: bold;
+                        color: var(--bright-blue);
+                      "
+                    >
+                      {{ orgsEvent.name }} <i class="fa fa-external-link"></i>
+                    </div>
                   </div>
                   <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-2">
+                    <div class="col" style="text-align: right; color: #aaaaaa">
                       {{
                         orgsEvent.date.split(" ")[1] +
                           " " +
                           orgsEvent.date.split(" ")[2]
                       }}
                     </div>
-                    <div class="col-2">
-                      <i
-                        class="fa fa-map-marker fa-3x"
-                        style="color: #0f79dc"
-                      ></i>
-                    </div>
-                    <div class="col-4">
-                      <h4>{{ orgsEvent.name }}</h4>
-                    </div>
-                    <div class="col-1">
-                      <button
-                        class="btn btn-primary"
-                        (click)="goToEventPageById(orgsEvent.id)"
-                      >
-                        More
-                      </button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-7"></div>
-                    <div class="col-5">{{ orgsEvent.location }}</div>
+                    <div class="col-1"></div>
+                    <div class="col">{{ orgsEvent.location }}</div>
                   </div>
                 </div>
                 <div *ngIf="!orgsEvent">
