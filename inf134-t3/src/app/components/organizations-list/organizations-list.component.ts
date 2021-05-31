@@ -13,13 +13,15 @@ export class OrganizationsListComponent implements OnInit {
   public orgsEvent;
   public collapseStatusOrgs = [];
   public keyword: string;
+  public displayStatus = [];
 
   constructor(public dataService: DataService, public router: Router) {}
 
   ngOnInit(): void {
     this.organizations = this.dataService.getOrganizations();
-    for  (let org of this.organizations) {
+    for (let org of this.organizations) {
       this.collapseStatusOrgs.push(false);
+      this.displayStatus.push(true);
     }
   }
 
@@ -42,23 +44,27 @@ export class OrganizationsListComponent implements OnInit {
     this.organizations = this.dataService.getOrganizations();
     console.log(this.organizations);
     this.organizations.sort(function compare(kv1, kv2) {
-        return kv1['name'].localeCompare(kv2['name']);
-      });
+      return kv1['name'].localeCompare(kv2['name']);
+    });
   }
 
   public toggleDescription(i) {
     this.collapseStatusOrgs[i] = !this.collapseStatusOrgs[i];
   }
 
-  public searchForOrg() {
-    console.log(this.keyword);
-    let searchResultOrgs = []
-    for (let org of this.organizations) {
-      if (org.name.toLowerCase().includes(this.keyword) || org.description.toLowerCase().includes(this.keyword)) {
-        searchResultOrgs.push(org);
+  search() {
+    let word = this.keyword.toLowerCase();
+    for (let i = 0; i < this.organizations.length; ++i) {
+      let o = this.organizations[i];
+      if (
+        o.name.toLowerCase().includes(word) ||
+        word === '' ||
+        o.description.toLowerCase().includes(word)
+      ) {
+        this.displayStatus[i] = true;
+      } else {
+        this.displayStatus[i] = false;
       }
     }
-    this.organizations = searchResultOrgs;
   }
-
 }
