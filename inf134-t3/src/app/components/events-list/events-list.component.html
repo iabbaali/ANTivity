@@ -11,8 +11,13 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
 
 <div class="container" style="margin-top: 70px">
   <div id="searchBar" style="text-align: center">
-    <input type="text" id="myInput" (keydown)="search()" placeholder="Search for names..">
-    <button class="btn btn-light" id="searchButton" (click)="search()"> Search</button>
+    <input
+      type="text"
+      id="myInput"
+      (input)="search()"
+      placeholder="Search for events.."
+      class="search-bar"
+    />
   </div>
 
   <div id="searchOptions" style="text-align: center">
@@ -56,6 +61,7 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
                 />
               </div>
               <span
+                class="event-name"
                 style="margin: 10px; position: absolute; vertical-align: middle"
                 >{{ event.name }}</span
               >

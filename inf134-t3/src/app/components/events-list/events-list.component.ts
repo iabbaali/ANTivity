@@ -137,24 +137,22 @@ export class EventsListComponent implements OnInit {
     }, 3000);
   }
 
-  search(): void{
+  search(): void {
     // Declare variables
     var input, filter, results, tr, td, i, txtValue;
-    input = document.getElementById("myInput");
+    input = document.getElementById('myInput');
     filter = input.value.toUpperCase();
-    results = document.getElementById("table");
-    tr = results.getElementsByTagName("tr");
+    results = document.getElementById('table');
+    tr = results.getElementsByTagName('tr');
 
     for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
+      td = tr[i].getElementsByTagName('td')[0];
       if (td) {
         txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
+          tr[i].style.display = '';
         } else {
-          console.log(td);
-          console.log(txtValue);
-          tr[i].style.display = "none";
+          tr[i].style.display = 'none';
         }
       }
     }
