@@ -9,11 +9,9 @@ button {
   position: relative;
 }
 
-.orgName {
+.card-header-custom {
   font-size: large;
   color: #e3f9f7;
-  margin: 12px;
-  position: absolute;
   vertical-align: middle;
 }
 

@@ -33,7 +33,7 @@
       <tr *ngFor="let org of organizations; let i = index">
         <td *ngIf="displayStatus[i]">
           <div class="card card-bar">
-            <div class="card-header bg-primary">
+            <div class="card-header bg-primary card-header-custom">
               <div id="org + {{ org.id }}">
                 <img
                   src="../../../assets/images/anteater-icon.png"
@@ -42,14 +42,17 @@
                   style="color: #0f79dc; float: left"
                 />
               </div>
-              <span class="orgName">{{ org.name }}</span>
+              <span
+                style="margin: 10px; position: absolute; vertical-align: middle"
+                >{{ org.name }}</span
+              >
             </div>
             <!-- Information -->
             <div class="container" style="margin: 10px">
               <div class="row">
                 <div class="col-4">
                   <!--TODO> add image here-->
-                  <img src="{{ org.image }}" width="200" height="200" />
+                  <img src="{{ org.image }}" width="200px" height="200px" />
                 </div>
                 <div class="col-8">
                   <div class="row">
