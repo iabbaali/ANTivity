@@ -58,7 +58,7 @@
                 />
               </div>
               <div class="col-md-8">
-                <div class="row">
+                <div class="row" style="margin-top: 15px">
                   <div class="col-1"></div>
                   <div class="col-5">
                     <i
@@ -67,8 +67,7 @@
                     ></i>
                     <a href="{{ org.website }}" target="_blank">{{
                       org.website.split("/")[2]
-                    }}</a
-                    >>
+                    }}</a>
                   </div>
                   <div class="col-6">
                     <i
@@ -80,7 +79,7 @@
                 </div>
                 <br />
                 <br />
-                <div class="row">
+                <div class="row" style="margin-left: 5px; margin-right: 5px">
                   <span [innerHTML]="org.description"></span>
                 </div>
               </div>
@@ -94,10 +93,9 @@
                 <div class="container" *ngIf="orgsEvent">
                   <br />
                   <h6>
-                    <span class="material-icons" style="color: #0f79dc"
-                      >today</span
+                    <i class="bi bi-calendar2-event bi-event-custom"
+                      ><span>Upcoming Events</span></i
                     >
-                    Upcoming Events:
                   </h6>
                   <br />
                   <div class="row">
@@ -127,7 +125,7 @@
                         class="btn btn-primary"
                         (click)="goToEventPageById(orgsEvent.id)"
                       >
-                        more
+                        More
                       </button>
                     </div>
                   </div>
@@ -153,6 +151,7 @@
                     : 'bi
                   bi-caret-up-fill'
                 "
+                style="font-size: 1.5rem; cursor: pointer"
               ></i>
             </div>
           </div>
