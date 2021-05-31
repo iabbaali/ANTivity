@@ -1,4 +1,4 @@
-# ANTivity - Henry Dang
+# ANTivity 
 A universal student events system for UCI students
 
 
