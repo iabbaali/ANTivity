@@ -50,6 +50,12 @@ export class OrganizationsListComponent implements OnInit {
     this.organizations.sort(function compare(kv1, kv2) {
       return kv1['name'].localeCompare(kv2['name']);
     });
+    this.organizationToEvents = [];
+    for (let org of this.organizations) {
+      this.organizationToEvents.push(
+        this.dataService.getEventsFromOrganization(org.id)
+      );
+    }
   }
 
   public toggleDescription(i) {
