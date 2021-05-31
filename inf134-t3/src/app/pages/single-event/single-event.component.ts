@@ -37,7 +37,7 @@ export class SingleEventComponent implements OnInit {
     }
 
     this.eventDate = new Date(date[2], date[0] - 1, date[1], hour, minutes);
-    this.eventImage = '../../../assets/images/' + this.event.image;
+    this.eventImage = 'assets/images/' + this.event.image;
   }
 
   backToPreviousPage() {
