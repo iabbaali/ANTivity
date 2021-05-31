@@ -14,6 +14,7 @@ export class OrganizationsListComponent implements OnInit {
   public collapseStatusOrgs = [];
   public keyword: string;
   public displayStatus = [];
+  public organizationToEvents = [];
 
   constructor(public dataService: DataService, public router: Router) {}
 
@@ -22,6 +23,9 @@ export class OrganizationsListComponent implements OnInit {
     for (let org of this.organizations) {
       this.collapseStatusOrgs.push(false);
       this.displayStatus.push(true);
+      this.organizationToEvents.push(
+        this.dataService.getEventsFromOrganization(org.id)
+      );
     }
   }
 

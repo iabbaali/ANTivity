@@ -90,7 +90,7 @@
                 class="container event-link-area"
                 *ngIf="collapseStatusOrgs[i]"
               >
-                <div class="container" *ngIf="orgsEvent">
+                <div class="container" *ngIf="organizationToEvents[i]">
                   <br />
                   <h6>
                     <span>Upcoming Events</span>
@@ -98,34 +98,37 @@
                   <br />
                   <div class="row">
                     <div class="col" style="text-align: right; color: #aaaaaa">
-                      {{ orgsEvent.date.split(" ")[0] }}
+                      {{ organizationToEvents[i].date.split(" ")[0] }}
                     </div>
                     <div class="col-1"></div>
                     <div
                       class="col"
-                      (click)="goToEventPageById(orgsEvent.id)"
+                      (click)="goToEventPageById(organizationToEvents[i].id)"
                       style="
                         cursor: pointer;
                         font-weight: bold;
                         color: var(--bright-blue);
                       "
                     >
-                      {{ orgsEvent.name }} <i class="fa fa-external-link"></i>
+                      {{ organizationToEvents[i].name }}
+                      <i class="fa fa-external-link"></i>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col" style="text-align: right; color: #aaaaaa">
                       {{
-                        orgsEvent.date.split(" ")[1] +
+                        organizationToEvents[i].date.split(" ")[1] +
                           " " +
-                          orgsEvent.date.split(" ")[2]
+                          organizationToEvents[i].date.split(" ")[2]
                       }}
                     </div>
                     <div class="col-1"></div>
-                    <div class="col">{{ orgsEvent.location }}</div>
+                    <div class="col">
+                      {{ organizationToEvents[i].location }}
+                    </div>
                   </div>
                 </div>
-                <div *ngIf="!orgsEvent">
+                <div *ngIf="!organizationToEvents[i]">
                   <br />
                   <h5>Currently has No Upcoming Events</h5>
                   <br />
