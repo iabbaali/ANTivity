@@ -1,7 +1,10 @@
 {
-  "Bren Hall": [[["Friday"], "12:00", "17:00"]],
+  "Bren Hall": [
+    [["Wednesday"], "19:00", "20:00"],
+    [["Friday"], "12:00", "17:00"]
+  ],
   "Aldrich Park": [
-    [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "15:00", "17:00"]
+    [["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "12:00", "17:00"]
   ],
   "Engineering Lecture Hall": [[["Tuesday", "Thursday"], "12:00", "14:00"]],
   "Natural Sciences": [[["Monday", "Wednesday", "Friday"], "08:00", "12:00"]],
