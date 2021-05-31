@@ -164,6 +164,7 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
           <div
             class="col folder-col"
             (drop)="dropToFolder($event, numFolder)"
+            (click)="dropToFolder($event, numFolder)"
             (dragover)="allowDrop($event)"
           >
             <i
