@@ -9,14 +9,38 @@ button {
   position: relative;
 }
 
-.orgName {
+.card-header-custom {
   font-size: large;
   color: #e3f9f7;
-  margin: 12px;
-  position: absolute;
   vertical-align: middle;
 }
 
 .material-icons.location {
   font-size: 18px;
+}
+
+.search-bar {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.img-custom {
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.image-area {
+  text-align: center;
+}
+
+h6 span,
+h5 {
+  color: var(--bright-blue);
+  font-size: 1.2rem;
+}
+
+.calendar-icon {
+  display: inline;
+  color: var(--bright-blue);
 }
