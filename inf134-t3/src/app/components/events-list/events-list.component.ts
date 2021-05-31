@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events-list',
@@ -27,7 +28,8 @@ export class EventsListComponent implements OnInit {
 
   constructor(
     public dataService: DataService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -73,6 +75,10 @@ export class EventsListComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  goToEvent(id) {
+    this.router.navigateByUrl('/event/' + id.toString());
   }
 
   public selectEvent(event) {

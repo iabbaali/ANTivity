@@ -97,7 +97,7 @@ https://medium.com/@svsh227/implement-drag-and-drop-in-angular-2-4-5-6-f27f210a0
               }}
               <div class="container event-link-area">
                 <a
-                  [href]="'/event/' + event.id.toString()"
+                  (click)="goToEvent(event.id)"
                   *ngIf="collapseStatusEvents[i]"
                   class="event-link"
                   >View Event</a
