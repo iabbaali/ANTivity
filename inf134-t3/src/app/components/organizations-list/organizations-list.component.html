@@ -48,38 +48,40 @@
               >
             </div>
             <!-- Information -->
-            <div class="container" style="margin: 10px">
-              <div class="row">
-                <div class="col-4">
-                  <!--TODO> add image here-->
-                  <img src="{{ org.image }}" width="200px" height="200px" />
+            <div class="row">
+              <div class="col image-area">
+                <img
+                  src="{{ org.image }}"
+                  width="200px"
+                  height="200px"
+                  class="img-custom"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-5">
+                    <i
+                      class="fa fa-external-link"
+                      style="color: #0f79dc; margin: 5px"
+                    ></i>
+                    <a href="{{ org.website }}" target="_blank">{{
+                      org.website.split("/")[2]
+                    }}</a
+                    >>
+                  </div>
+                  <div class="col-6">
+                    <i
+                      class="fa fa-facebook-square"
+                      style="color: #0f79dc; margin: 5px"
+                    ></i>
+                    {{ org.social_media }}
+                  </div>
                 </div>
-                <div class="col-8">
-                  <div class="row">
-                    <div class="col-1"></div>
-                    <div class="col-5">
-                      <i
-                        class="fa fa-external-link"
-                        style="color: #0f79dc; margin: 5px"
-                      ></i>
-                      <a href="{{ org.website }}" target="_blank">{{
-                        org.website.split("/")[2]
-                      }}</a
-                      >>
-                    </div>
-                    <div class="col-6">
-                      <i
-                        class="fa fa-facebook-square"
-                        style="color: #0f79dc; margin: 5px"
-                      ></i>
-                      {{ org.social_media }}
-                    </div>
-                  </div>
-                  <br />
-                  <br />
-                  <div class="row">
-                    <span [innerHTML]="org.description"></span>
-                  </div>
+                <br />
+                <br />
+                <div class="row">
+                  <span [innerHTML]="org.description"></span>
                 </div>
               </div>
             </div>

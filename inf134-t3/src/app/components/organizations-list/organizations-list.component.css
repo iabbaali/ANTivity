@@ -24,3 +24,12 @@ button {
   border: none;
   outline: none;
 }
+
+.img-custom {
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.image-area {
+  text-align: center;
+}
